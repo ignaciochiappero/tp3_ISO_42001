@@ -1,0 +1,1157 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SGIA — MercadoLibre · ISO/IEC 42001 · Trabajo Práctico 3</title>
+<link href="https://fonts.googleapis.com/css2?family=Proxima+Nova:wght@400;600;700&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* ── MercadoLibre Design System ── */
+:root{
+  --ml-yellow:#FFE600;
+  --ml-yellow-dark:#EAD200;
+  --ml-blue:#2D3277;
+  --ml-blue-light:#3483FA;
+  --ml-green:#00A650;
+  --ml-red:#F23D4F;
+  --ml-orange:#FF7733;
+  --ml-bg:#EBEBEB;
+  --ml-white:#FFFFFF;
+  --ml-card:#FFFFFF;
+  --ml-border:#E0E0E0;
+  --ml-text:#333333;
+  --ml-text-light:#666666;
+  --ml-text-xlight:#999999;
+  --ml-shadow:0 1px 2px 0 rgba(0,0,0,.12);
+  --ml-shadow-hover:0 4px 12px 0 rgba(0,0,0,.18);
+  --ml-radius:6px;
+  --ml-radius-lg:10px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Inter','Proxima Nova',Arial,sans-serif;background:var(--ml-bg);color:var(--ml-text);font-size:14px;line-height:1.5}
+
+/* ── TOP HEADER (amarillo ML) ── */
+.site-header{
+  background:var(--ml-yellow);
+  padding:0 24px;
+  display:flex;align-items:center;gap:16px;
+  height:56px;
+  position:sticky;top:0;z-index:200;
+  box-shadow:0 1px 2px rgba(0,0,0,.15);
+}
+.ml-logo-wrap{display:flex;align-items:center;gap:0;flex-shrink:0}
+.ml-logo-svg{height:34px;width:auto}
+.header-search{
+  flex:1;max-width:680px;
+  display:flex;align-items:center;
+  background:#fff;
+  border-radius:var(--ml-radius);
+  border:1px solid transparent;
+  overflow:hidden;
+  box-shadow:0 1px 2px rgba(0,0,0,.1);
+}
+.header-search input{
+  flex:1;border:none;outline:none;
+  padding:10px 14px;font-size:14px;color:var(--ml-text);
+  font-family:inherit;background:transparent;
+}
+.header-search-btn{
+  background:var(--ml-blue-light);color:#fff;
+  border:none;padding:0 18px;height:100%;cursor:pointer;
+  display:flex;align-items:center;font-size:16px;
+  transition:background .15s;
+}
+.header-search-btn:hover{background:#2968c8}
+.header-right{display:flex;align-items:center;gap:4px;margin-left:auto;flex-shrink:0}
+.nav-link{
+  font-size:13px;color:var(--ml-blue);font-weight:500;
+  cursor:pointer;transition:opacity .15s;
+  text-decoration:none;padding:6px 10px;border-radius:4px;
+  white-space:nowrap;
+}
+.nav-link:hover{opacity:.75}
+.print-btn{
+  background:var(--ml-blue);color:#fff;
+  border:none;border-radius:var(--ml-radius);
+  padding:8px 16px;font-size:13px;font-weight:600;
+  cursor:pointer;white-space:nowrap;transition:background .15s;
+  font-family:inherit;
+}
+.print-btn:hover{background:#1e2257}
+
+/* ── SUB-NAV (azul ML) ── */
+.section-nav{
+  background:var(--ml-blue);
+  display:flex;gap:0;padding:0 24px;
+  overflow-x:auto;position:sticky;top:56px;z-index:100;
+  box-shadow:0 2px 4px rgba(0,0,0,.2);
+}
+.section-nav::-webkit-scrollbar{display:none}
+.pill{
+  font-size:13px;font-weight:500;
+  padding:14px 16px;
+  background:none;border:none;cursor:pointer;
+  color:rgba(255,255,255,.75);white-space:nowrap;
+  transition:all .15s;font-family:inherit;
+  border-bottom:3px solid transparent;
+  margin-bottom:-1px;
+}
+.pill:hover{color:#fff;background:rgba(255,255,255,.08)}
+.pill.on{color:#fff;border-bottom-color:var(--ml-yellow);font-weight:600}
+
+/* ── HERO BANNER ── */
+.hero{
+  background:linear-gradient(120deg,var(--ml-yellow) 0%,#FFF176 60%,#fff 100%);
+  padding:48px 24px;
+  border-bottom:1px solid var(--ml-border);
+  min-height:auto;
+  position:relative;overflow:hidden;
+}
+.hero-bg{display:none}
+.hero-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;gap:48px}
+.hero-content{flex:1}
+.hero-tag{
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:11px;font-weight:700;color:var(--ml-blue);
+  letter-spacing:.1em;text-transform:uppercase;
+  background:rgba(45,50,119,.1);
+  padding:4px 12px;border-radius:20px;margin-bottom:16px;
+}
+.hero-tag::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--ml-blue);animation:pulse-dot 2s ease-in-out infinite}
+@keyframes pulse-dot{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.6)}}
+.hero h1{
+  font-size:clamp(28px,4vw,44px);font-weight:800;
+  color:var(--ml-blue);line-height:1.1;
+  letter-spacing:-.5px;margin-bottom:10px;
+}
+.hero h1 em{font-style:normal;color:var(--ml-blue)}
+.hero-sub{font-size:15px;color:var(--ml-blue);opacity:.8;margin-bottom:20px;font-weight:400}
+.hero-sub strong{font-weight:700;opacity:1}
+.hero-org{
+  display:inline-flex;align-items:center;gap:10px;
+  background:rgba(255,255,255,.7);
+  border-radius:var(--ml-radius);padding:8px 14px;
+  margin-bottom:32px;border:1px solid rgba(45,50,119,.15);
+}
+.hero-org-label{font-size:12px;color:var(--ml-blue);font-weight:500}
+
+.hero-stats{
+  display:grid;grid-template-columns:repeat(4,1fr);
+  gap:8px;max-width:600px;
+}
+.hstat{
+  background:rgba(255,255,255,.85);
+  border-radius:var(--ml-radius-lg);
+  padding:16px 18px;
+  border:1px solid rgba(45,50,119,.12);
+  backdrop-filter:blur(4px);
+}
+.hstat .n{font-size:30px;font-weight:800;color:var(--ml-blue);line-height:1}
+.hstat .n .accent{color:var(--ml-blue)}
+.hstat .l{font-size:10px;color:var(--ml-blue);opacity:.7;margin-top:4px;text-transform:uppercase;letter-spacing:.05em;font-weight:500}
+.hstat-link{display:block;cursor:pointer;transition:transform .15s;border-radius:var(--ml-radius)}
+.hstat-link:hover{transform:translateY(-2px)}
+
+/* ── MAIN CONTENT ── */
+.main{max-width:1200px;margin:0 auto;padding:24px 24px 80px}
+
+/* ── SECTIONS ── */
+.section{padding:32px 0 0;opacity:0;transform:translateY(16px);transition:opacity .4s ease,transform .4s ease}
+.section.visible{opacity:1;transform:none}
+.section-hdr{
+  display:flex;align-items:center;gap:12px;
+  margin-bottom:16px;
+  padding-bottom:12px;
+  border-bottom:2px solid var(--ml-yellow);
+}
+.section-num{
+  font-size:11px;font-weight:700;color:var(--ml-white);
+  background:var(--ml-blue);
+  width:28px;height:28px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;
+}
+.section-hdr h2{font-size:20px;font-weight:700;color:var(--ml-blue);letter-spacing:-.2px}
+.section-tag{
+  font-size:10px;font-weight:700;padding:3px 10px;border-radius:20px;
+  letter-spacing:.06em;text-transform:uppercase;
+  background:var(--ml-yellow);color:var(--ml-blue);
+  margin-left:auto;
+}
+.divider{height:1px;background:var(--ml-border);margin:32px 0 0}
+
+/* ── CARDS ── */
+.card{
+  background:var(--ml-card);border-radius:var(--ml-radius-lg);
+  padding:20px;box-shadow:var(--ml-shadow);
+  transition:box-shadow .2s;border:none;
+}
+.card:hover{box-shadow:var(--ml-shadow-hover)}
+.card-label{font-size:10px;font-weight:600;color:var(--ml-text-light);text-transform:uppercase;letter-spacing:.1em;margin-bottom:8px}
+.card-title{font-size:16px;font-weight:700;color:var(--ml-blue);margin-bottom:6px}
+.card-body{font-size:13px;color:var(--ml-text-light);line-height:1.6}
+
+/* ── CONTEXT GRID ── */
+.context-grid{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:8px;margin-bottom:16px;
+}
+.ctx-cell{background:var(--ml-card);border-radius:var(--ml-radius-lg);padding:16px 20px;box-shadow:var(--ml-shadow)}
+.ctx-cell.full{grid-column:1/-1}
+.ctx-label{font-size:10px;font-weight:600;color:var(--ml-text-xlight);text-transform:uppercase;letter-spacing:.1em;margin-bottom:6px}
+.ctx-val{font-size:13px;color:var(--ml-text);line-height:1.5}
+.ctx-val.big{font-size:17px;font-weight:700;color:var(--ml-blue)}
+.tag{display:inline-block;font-size:11px;font-weight:500;padding:3px 10px;border-radius:20px;margin:2px}
+.tag-green{background:#E8F7EF;color:var(--ml-green)}
+.tag-blue{background:#EBF0FF;color:var(--ml-blue)}
+.tag-yellow{background:#FFFACC;color:#7a6b00}
+.tag-red{background:#FDEDEF;color:var(--ml-red)}
+.tag-gray{background:#F0F0F0;color:var(--ml-text-light)}
+
+/* ── TABLE ── */
+.inv-table{width:100%;border-collapse:collapse}
+.inv-table th{
+  padding:10px 14px;font-size:11px;font-weight:600;
+  color:var(--ml-text-light);text-transform:uppercase;letter-spacing:.06em;
+  text-align:left;background:var(--ml-bg);border-bottom:2px solid var(--ml-border);
+}
+.inv-table td{padding:12px 14px;font-size:13px;color:var(--ml-text);border-bottom:1px solid var(--ml-border);vertical-align:top}
+.inv-table tr:last-child td{border-bottom:none}
+.inv-table tr:hover td{background:#F5F9FF}
+.risk-pill{display:inline-block;font-size:11px;font-weight:600;padding:3px 10px;border-radius:4px;white-space:nowrap}
+.risk-critico{background:#FDEDEF;color:var(--ml-red)}
+.risk-alto{background:#FFFACC;color:#7a6b00}
+.risk-medio{background:#EBF0FF;color:var(--ml-blue)}
+.risk-bajo{background:#E8F7EF;color:var(--ml-green)}
+.sys-name{font-weight:600;color:var(--ml-blue);margin-bottom:2px;font-size:13px}
+.sys-area{font-size:11px;color:var(--ml-text-xlight)}
+.score-num{font-size:18px;font-weight:700;color:var(--ml-blue)}
+.score-sub{font-size:10px;color:var(--ml-text-xlight)}
+
+/* ── RISK CARDS ── */
+.risk-cards{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.risk-card{background:var(--ml-card);border-radius:var(--ml-radius-lg);padding:16px 18px;box-shadow:var(--ml-shadow);transition:box-shadow .15s;border-left:4px solid var(--ml-border)}
+.risk-card:hover{box-shadow:var(--ml-shadow-hover)}
+.risk-card-id{font-size:10px;font-weight:700;color:var(--ml-text-xlight);letter-spacing:.1em;text-transform:uppercase;margin-bottom:6px;display:flex;align-items:center;justify-content:space-between}
+.risk-card-title{font-size:14px;font-weight:700;color:var(--ml-blue);margin-bottom:5px;line-height:1.3}
+.risk-card-body{font-size:12px;color:var(--ml-text-light);line-height:1.55;margin-bottom:10px}
+.risk-meta{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.risk-score{font-size:22px;font-weight:800;color:var(--ml-blue)}
+.risk-score span{font-size:11px;color:var(--ml-text-xlight);font-weight:400}
+.risk-status{display:inline-block;font-size:11px;font-weight:600;padding:3px 10px;border-radius:4px}
+.status-pendiente{background:#FFFACC;color:#7a6b00}
+.status-proceso{background:#EBF0FF;color:var(--ml-blue)}
+.status-cerrado{background:#E8F7EF;color:var(--ml-green)}
+.risk-resp{font-size:11px;color:var(--ml-text-xlight);margin-top:6px}
+.risk-card-title a{color:inherit;text-decoration:none;border-bottom:1px dashed rgba(45,50,119,.35);padding-bottom:1px;transition:all .15s}
+.risk-card-title a:hover{color:var(--ml-blue-light);border-bottom-color:var(--ml-blue-light)}
+.risk-card-title a::after{content:' ↗';font-size:10px;color:rgba(45,50,119,.4);font-weight:400}
+.risk-card-title a:hover::after{color:var(--ml-blue-light)}
+
+/* ── BRECHAS ── */
+.brecha-list{display:flex;flex-direction:column;gap:8px}
+.brecha-item{
+  background:var(--ml-card);border-radius:var(--ml-radius-lg);
+  padding:16px 18px;display:grid;grid-template-columns:auto 1fr auto;
+  gap:14px;align-items:start;box-shadow:var(--ml-shadow);
+  transition:box-shadow .15s;border-left:4px solid var(--ml-border);
+}
+.brecha-item:hover{box-shadow:var(--ml-shadow-hover)}
+.brecha-id{font-size:12px;font-weight:700;color:var(--ml-text-xlight);white-space:nowrap;padding-top:2px}
+.brecha-title{font-size:14px;font-weight:700;color:var(--ml-blue);margin-bottom:4px;line-height:1.3}
+.brecha-desc{font-size:12px;color:var(--ml-text-light);line-height:1.55}
+.brecha-rec{font-size:11px;color:var(--ml-green);margin-top:5px;font-weight:500}
+.brecha-title a{color:inherit;text-decoration:none;border-bottom:1px dashed rgba(45,50,119,.35);padding-bottom:1px;transition:all .15s}
+.brecha-title a:hover{color:var(--ml-blue-light);border-bottom-color:var(--ml-blue-light)}
+.brecha-title a::after{content:' ↗';font-size:10px;color:rgba(45,50,119,.4);font-weight:400}
+.brecha-title a:hover::after{color:var(--ml-blue-light)}
+.crit-critica{color:var(--ml-red);background:#FDEDEF;font-size:11px;font-weight:700;padding:3px 10px;border-radius:4px;white-space:nowrap;text-transform:uppercase;letter-spacing:.04em}
+.crit-alta{color:#7a6b00;background:#FFFACC;font-size:11px;font-weight:700;padding:3px 10px;border-radius:4px;white-space:nowrap;text-transform:uppercase;letter-spacing:.04em}
+.crit-media{color:var(--ml-blue);background:#EBF0FF;font-size:11px;font-weight:700;padding:3px 10px;border-radius:4px;white-space:nowrap;text-transform:uppercase;letter-spacing:.04em}
+
+/* ── POLICY ── */
+.policy-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.policy-card{background:var(--ml-card);border-radius:var(--ml-radius-lg);padding:18px;position:relative;overflow:hidden;box-shadow:var(--ml-shadow);transition:box-shadow .15s}
+.policy-card:hover{box-shadow:var(--ml-shadow-hover)}
+.policy-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:var(--ml-yellow)}
+.policy-card-icon{font-size:22px;margin-bottom:10px}
+.policy-card-title{font-size:13px;font-weight:700;color:var(--ml-blue);margin-bottom:5px;line-height:1.3}
+.policy-card-body{font-size:12px;color:var(--ml-text-light);line-height:1.55}
+
+/* ── RECS ── */
+.rec-list{display:flex;flex-direction:column;gap:8px}
+.rec-item{background:var(--ml-card);border-radius:var(--ml-radius-lg);padding:16px 18px;display:flex;gap:14px;align-items:flex-start;box-shadow:var(--ml-shadow);transition:box-shadow .15s}
+.rec-item:hover{box-shadow:var(--ml-shadow-hover)}
+.rec-num{font-size:20px;font-weight:800;color:rgba(45,50,119,.15);min-width:28px;line-height:1.2}
+.rec-title{font-size:14px;font-weight:700;color:var(--ml-blue);margin-bottom:4px}
+.rec-title a{color:inherit;text-decoration:none;border-bottom:1px dashed rgba(45,50,119,.35);padding-bottom:1px;transition:all .15s}
+.rec-title a:hover{color:var(--ml-blue-light);border-bottom-color:var(--ml-blue-light)}
+.rec-title a::after{content:' ↗';font-size:10px;color:rgba(45,50,119,.4);font-weight:400}
+.rec-title a:hover::after{color:var(--ml-blue-light)}
+.rec-refs{display:flex;gap:6px;flex-wrap:wrap;margin-top:6px;margin-bottom:2px}
+.rec-ref-link{display:inline-flex;align-items:center;gap:4px;font-size:11px;font-weight:600;padding:3px 9px;border-radius:4px;background:#EBF0FF;color:var(--ml-blue);text-decoration:none;transition:all .15s}
+.rec-ref-link:hover{background:var(--ml-yellow);color:var(--ml-blue)}
+.rec-body{font-size:12px;color:var(--ml-text-light);line-height:1.55}
+.rec-prio{display:inline-block;font-size:10px;font-weight:600;padding:2px 8px;border-radius:4px;margin-top:6px}
+.rec-footer{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:8px}
+.rec-estado{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:600;padding:3px 10px;border-radius:4px}
+.rec-estado::before{content:'';width:6px;height:6px;border-radius:50%;flex-shrink:0}
+.rec-estado.pendiente{background:#FFFACC;color:#7a6b00}
+.rec-estado.pendiente::before{background:#c8a800}
+.rec-estado.proceso{background:#EBF0FF;color:var(--ml-blue)}
+.rec-estado.proceso::before{background:var(--ml-blue);animation:pulse-dot 1.6s ease-in-out infinite}
+.rec-estado.cerrado{background:#E8F7EF;color:var(--ml-green)}
+.rec-estado.cerrado::before{background:var(--ml-green)}
+
+/* ── SUMMARY ── */
+.summary-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.sum-cell{background:var(--ml-card);border-radius:var(--ml-radius-lg);padding:24px;text-align:center;box-shadow:var(--ml-shadow)}
+.sum-n{font-size:40px;font-weight:800;color:var(--ml-blue);line-height:1}
+.sum-n.red{color:var(--ml-red)}
+.sum-n.yellow{color:#c8a800}
+.sum-n.green{color:var(--ml-green)}
+.sum-label{font-size:11px;color:var(--ml-text-xlight);margin-top:6px;text-transform:uppercase;letter-spacing:.08em;font-weight:500}
+
+/* ── REGULATORY ── */
+.reg-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-bottom:16px}
+.reg-card{background:var(--ml-card);border-radius:var(--ml-radius-lg);padding:16px 18px;box-shadow:var(--ml-shadow);transition:box-shadow .15s}
+.reg-card:hover{box-shadow:var(--ml-shadow-hover)}
+.reg-name{font-size:13px;font-weight:700;color:var(--ml-blue);margin-bottom:4px}
+.reg-body{font-size:12px;color:var(--ml-text-light);line-height:1.55}
+
+/* ── TABS ── */
+.tabs-row{display:flex;border-bottom:1px solid var(--ml-border);margin-bottom:16px}
+.tab-btn{font-size:13px;font-weight:500;padding:10px 16px;background:none;border:none;cursor:pointer;color:var(--ml-text-light);border-bottom:3px solid transparent;transition:all .12s;margin-bottom:-1px;font-family:inherit}
+.tab-btn.on{color:var(--ml-blue);border-bottom-color:var(--ml-blue);font-weight:600}
+.tab-btn:hover:not(.on){color:var(--ml-blue)}
+.tab-pane{display:none}.tab-pane.on{display:block}
+
+/* ── FOOTER ── */
+.site-footer{background:#1a1a2e;padding:28px 24px;display:flex;align-items:center;justify-content:space-between;margin-top:48px}
+.site-footer p{font-size:12px;color:rgba(255,255,255,.5)}
+
+/* ── PRINT ── */
+@media print{
+  .site-header,.section-nav,.print-btn{display:none!important}
+  .section{opacity:1!important;transform:none!important}
+  body{background:#fff;color:#000}
+}
+
+/* ── RESPONSIVE ── */
+@media(max-width:700px){
+  .hero-stats{grid-template-columns:repeat(2,1fr)}
+  .context-grid{grid-template-columns:1fr}
+  .risk-cards{grid-template-columns:1fr}
+  .policy-grid{grid-template-columns:1fr}
+  .summary-grid{grid-template-columns:1fr}
+  .main{padding:16px 16px 60px}
+  .section-nav{padding:0 16px}
+  .site-header{padding:0 16px}
+}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="ml-logo-wrap">
+    <svg class="ml-logo-svg" viewBox="0 0 180 56" xmlns="http://www.w3.org/2000/svg">
+      <!-- Óvalo fondo amarillo con borde azul -->
+      <ellipse cx="30" cy="26" rx="28" ry="24" fill="#FFE600" stroke="#2D3277" stroke-width="3.5"/>
+      <!-- Apretón de manos -->
+      <!-- brazo izquierdo -->
+      <path d="M8 30 C10 24 16 21 21 23 L27 26" stroke="#2D3277" stroke-width="3" stroke-linecap="round" fill="none"/>
+      <!-- dedo pulgar izquierdo -->
+      <path d="M21 23 C22 20 25 19 27 21" stroke="#2D3277" stroke-width="2" stroke-linecap="round" fill="none"/>
+      <!-- brazo derecho -->
+      <path d="M52 30 C50 24 44 21 39 23 L33 26" stroke="#2D3277" stroke-width="3" stroke-linecap="round" fill="none"/>
+      <!-- dedo pulgar derecho -->
+      <path d="M39 23 C38 20 35 19 33 21" stroke="#2D3277" stroke-width="2" stroke-linecap="round" fill="none"/>
+      <!-- unión de manos en el centro -->
+      <path d="M27 26 C28 28 32 28 33 26 C34 24 30 22 27 26 Z" fill="#2D3277"/>
+      <!-- Wordmark -->
+      <text x="68" y="22" font-family="Arial,Helvetica,sans-serif" font-weight="800" font-size="15" fill="#2D3277">mercado</text>
+      <text x="68" y="41" font-family="Arial,Helvetica,sans-serif" font-weight="800" font-size="15" fill="#2D3277">libre</text>
+    </svg>
+  </div>
+  <!-- Barra de búsqueda -->
+  <div class="header-search">
+    <input type="text" placeholder="Buscar en SGIA · ISO/IEC 42001" readonly/>
+    <button class="header-search-btn">🔍</button>
+  </div>
+  <!-- Nav links -->
+  <div class="header-right">
+    <a class="nav-link" onclick="document.getElementById('contexto').scrollIntoView({behavior:'smooth'})">Contexto</a>
+    <a class="nav-link" onclick="document.getElementById('inventario').scrollIntoView({behavior:'smooth'})">Inventario</a>
+    <a class="nav-link" onclick="document.getElementById('politica').scrollIntoView({behavior:'smooth'})">Política</a>
+    <a class="nav-link" onclick="document.getElementById('riesgos').scrollIntoView({behavior:'smooth'})">Riesgos</a>
+    <button class="print-btn" onclick="window.print()">⬇ Imprimir</button>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-content">
+      <div class="hero-tag">Trabajo Práctico 3 · Formación de Auditores</div>
+      <h1>Sistema de Gestión de<br><em>Inteligencia Artificial</em></h1>
+      <p class="hero-sub">Diseño de Auditoría · <strong>ISO/IEC 42001:2023</strong></p>
+      <div class="hero-org">
+        <svg width="110" height="34" viewBox="0 0 180 56" xmlns="http://www.w3.org/2000/svg">
+          <ellipse cx="30" cy="26" rx="28" ry="24" fill="#FFE600" stroke="#2D3277" stroke-width="3.5"/>
+          <path d="M8 30 C10 24 16 21 21 23 L27 26" stroke="#2D3277" stroke-width="3" stroke-linecap="round" fill="none"/>
+          <path d="M21 23 C22 20 25 19 27 21" stroke="#2D3277" stroke-width="2" stroke-linecap="round" fill="none"/>
+          <path d="M52 30 C50 24 44 21 39 23 L33 26" stroke="#2D3277" stroke-width="3" stroke-linecap="round" fill="none"/>
+          <path d="M39 23 C38 20 35 19 33 21" stroke="#2D3277" stroke-width="2" stroke-linecap="round" fill="none"/>
+          <path d="M27 26 C28 28 32 28 33 26 C34 24 30 22 27 26 Z" fill="#2D3277"/>
+          <text x="68" y="22" font-family="Arial,Helvetica,sans-serif" font-weight="800" font-size="15" fill="#2D3277">mercado</text>
+          <text x="68" y="41" font-family="Arial,Helvetica,sans-serif" font-weight="800" font-size="15" fill="#2D3277">libre</text>
+        </svg>
+        <div class="hero-org-label">Caso de estudio · SGIA aplicado</div>
+      </div>
+      <div class="hero-stats">
+        <div class="hstat">
+          <div class="hstat-link" onclick="document.getElementById('inventario').scrollIntoView({behavior:'smooth'})">
+            <div class="n"><span class="accent">7</span></div>
+            <div class="l">Sistemas IA</div>
+          </div>
+        </div>
+        <div class="hstat">
+          <div class="hstat-link" onclick="document.getElementById('riesgos').scrollIntoView({behavior:'smooth'})">
+            <div class="n"><span class="accent">10</span></div>
+            <div class="l">Riesgos</div>
+          </div>
+        </div>
+        <div class="hstat">
+          <div class="hstat-link" onclick="document.getElementById('brechas').scrollIntoView({behavior:'smooth'})">
+            <div class="n"><span class="accent">7</span></div>
+            <div class="l">Brechas</div>
+          </div>
+        </div>
+        <div class="hstat">
+          <div class="hstat-link" onclick="document.getElementById('politica').scrollIntoView({behavior:'smooth'})">
+            <div class="n"><span class="accent">9</span></div>
+            <div class="l">Principios</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Ilustración derecha -->
+    <div style="flex-shrink:0;display:flex;align-items:center;justify-content:center">
+      <svg width="260" height="220" viewBox="0 0 260 220" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- Fondo card -->
+        <rect x="20" y="20" width="220" height="180" rx="16" fill="white" opacity=".85"/>
+        <!-- Barra amarilla top -->
+        <rect x="20" y="20" width="220" height="8" rx="8" fill="#FFE600"/>
+        <!-- ISO badge -->
+        <rect x="44" y="46" width="80" height="28" rx="6" fill="#2D3277"/>
+        <text x="84" y="65" text-anchor="middle" font-family="Arial,sans-serif" font-weight="700" font-size="11" fill="#FFE600">ISO 42001</text>
+        <!-- SGIA text -->
+        <text x="44" y="100" font-family="Arial,sans-serif" font-weight="800" font-size="22" fill="#2D3277">SGIA</text>
+        <text x="44" y="118" font-family="Arial,sans-serif" font-weight="400" font-size="11" fill="#666">MercadoLibre</text>
+        <!-- Barras de riesgo -->
+        <rect x="44" y="136" width="150" height="8" rx="4" fill="#EBEBEB"/>
+        <rect x="44" y="136" width="60" height="8" rx="4" fill="#F23D4F"/>
+        <rect x="44" y="152" width="150" height="8" rx="4" fill="#EBEBEB"/>
+        <rect x="44" y="152" width="100" height="8" rx="4" fill="#FFE600"/>
+        <rect x="44" y="168" width="150" height="8" rx="4" fill="#EBEBEB"/>
+        <rect x="44" y="168" width="130" height="8" rx="4" fill="#00A650"/>
+        <!-- Checkmark -->
+        <circle cx="210" cy="60" r="18" fill="#E8F7EF"/>
+        <text x="210" y="67" text-anchor="middle" font-size="18">✓</text>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- NAV PILLS -->
+<nav class="section-nav" id="sectionNav">
+  <button class="pill on" onclick="setActive(this,'contexto')">01 · Contexto</button>
+  <button class="pill" onclick="setActive(this,'inventario')">02 · Inventario IA</button>
+  <button class="pill" onclick="setActive(this,'politica')">03 · Política IA</button>
+  <button class="pill" onclick="setActive(this,'riesgos')">04 · Matriz de Riesgos</button>
+  <button class="pill" onclick="setActive(this,'brechas')">05 · Brechas</button>
+  <button class="pill" onclick="setActive(this,'recomendaciones')">06 · Recomendaciones</button>
+</nav>
+
+<div class="main">
+
+<!-- ═══ 01 CONTEXTO ═══ -->
+<section class="section" id="contexto">
+  <div class="section-hdr">
+    <div class="section-num">01</div>
+    <h2>Contexto de la organización</h2>
+    <span class="section-tag">ISO 42001 · Cláusula 4</span>
+  </div>
+
+  <div class="context-grid" style="margin-bottom:24px">
+    <div class="ctx-cell">
+      <div class="ctx-label">Organización</div>
+      <div class="ctx-val big">MercadoLibre S.R.L.</div>
+      <div class="ctx-val" style="margin-top:4px;font-size:12px;color:var(--gray)">Fundada en 1999, Buenos Aires, Argentina</div>
+    </div>
+    <div class="ctx-cell">
+      <div class="ctx-label">Capitalización y alcance</div>
+      <div class="ctx-val"><span class="tag tag-yellow">NASDAQ: MELI</span> <span class="tag tag-gray">Mayor cap. bursátil LatAm</span></div>
+      <div class="ctx-val" style="margin-top:8px;font-size:13px">218M+ usuarios · 18 países · ~45.000 empleados</div>
+    </div>
+    <div class="ctx-cell">
+      <div class="ctx-label">Ecosistema de negocio</div>
+      <div class="ctx-val">
+        <span class="tag tag-green">Marketplace</span>
+        <span class="tag tag-blue">Mercado Pago</span>
+        <span class="tag tag-yellow">Mercado Crédito</span>
+        <span class="tag tag-gray">Mercado Envíos</span>
+        <span class="tag tag-gray">Publicidad Digital</span>
+        <span class="tag tag-gray">Atención al cliente</span>
+      </div>
+    </div>
+    <div class="ctx-cell">
+      <div class="ctx-label">Infraestructura IA</div>
+      <div class="ctx-val"><span class="tag tag-green">Verdi (GPT-4o interno)</span> <span class="tag tag-blue">AWS</span> <span class="tag tag-gray">Google Cloud</span></div>
+      <div class="ctx-val" style="margin-top:8px;font-size:12px;color:var(--gray)">La IA es el motor central de cada interacción en la plataforma</div>
+    </div>
+  </div>
+
+  <div class="tabs-row">
+    <button class="tab-btn on" onclick="switchTab(event,'ctx')">Factores externos</button>
+    <button class="tab-btn" onclick="switchTab(event,'ctx')">Partes interesadas</button>
+    <button class="tab-btn" onclick="switchTab(event,'ctx')">Alcance SGIA</button>
+  </div>
+
+  <div class="tab-pane on" id="ctx-t0">
+    <div class="reg-grid">
+      <div class="reg-card">
+        <div class="reg-name">EU AI Act (2024)</div>
+        <div class="reg-body">Clasifica scoring crediticio, detección de fraude y moderación automática como sistemas de <strong style="color:var(--red)">ALTO RIESGO</strong>. Exige transparencia, supervisión humana, trazabilidad y evaluación de impacto. Aplica a proveedores cloud de MELI.</div>
+      </div>
+      <div class="reg-card">
+        <div class="reg-name">ISO/IEC 42001:2023</div>
+        <div class="reg-body">Marco de referencia central del SGIA. Exige política, inventario, gestión de riesgos, evaluación de desempeño y mejora continua del sistema de gestión de IA.</div>
+      </div>
+      <div class="reg-card">
+        <div class="reg-name">Leyes de datos personales</div>
+        <div class="reg-body">Argentina Ley 25.326 (reforma pendiente), Brasil LGPD, México LFPDPPP, Colombia Ley 1581, Uruguay Ley 18.331. Los sistemas IA de MELI procesan datos sensibles de millones de usuarios.</div>
+      </div>
+      <div class="reg-card">
+        <div class="reg-name">Regulaciones financieras</div>
+        <div class="reg-body">Los modelos de scoring y antifraude deben cumplir normativas del BCRA y equivalentes regionales. El BID documenta que mujeres en LatAm tienen hasta 18% menos probabilidad de aprobación crediticia.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tab-pane" id="ctx-t1">
+    <div class="context-grid">
+      <div class="ctx-cell">
+        <div class="ctx-label">Internas</div>
+        <div class="ctx-val" style="font-size:13px">CTO · Comité de Gobernanza IA · Product Owners · Científicos de datos · Equipos de ingeniería · Legal y Compliance · RRHH · Operaciones</div>
+      </div>
+      <div class="ctx-cell">
+        <div class="ctx-label">Externas</div>
+        <div class="ctx-val" style="font-size:13px">Compradores y vendedores de la plataforma · Reguladores financieros · Entes de protección de datos · Organismos de certificación · Proveedores cloud · Inversores</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tab-pane" id="ctx-t2">
+    <div class="card">
+      <div class="card-label">Alcance del SGIA — AC-MELI-001 v1.0</div>
+      <div class="card-body">El SGIA cubre todas las unidades de negocio, empleados, contratistas y terceros que diseñen, desarrollen, implementen, operen o monitoreen sistemas de IA dentro del ecosistema de Mercado Libre en los 18 países donde opera: <strong style="color:var(--white)">Marketplace</strong> (recomendación, moderación, pricing), <strong style="color:var(--white)">Mercado Pago</strong> (antifraude, biometría), <strong style="color:var(--white)">Mercado Crédito</strong> (scoring crediticio), <strong style="color:var(--white)">Mercado Envíos</strong> (optimización logística), <strong style="color:var(--white)">Atención al cliente</strong> (Verdi/GPT-4o).</div>
+    </div>
+  </div>
+</section>
+<div class="divider"></div>
+
+<!-- ═══ 02 INVENTARIO ═══ -->
+<section class="section" id="inventario">
+  <div class="section-hdr">
+    <div class="section-num">02</div>
+    <h2>Inventario de sistemas de IA</h2>
+    <span class="section-tag">M02 · EU AI Act + ISO 42001</span>
+  </div>
+
+  <div class="summary-grid" style="margin-bottom:28px">
+    <div class="sum-cell">
+      <div class="sum-n red">4</div>
+      <div class="sum-label">Sistemas críticos</div>
+    </div>
+    <div class="sum-cell">
+      <div class="sum-n yellow">2</div>
+      <div class="sum-label">Sistemas altos</div>
+    </div>
+    <div class="sum-cell">
+      <div class="sum-n green">1</div>
+      <div class="sum-label">Sistema limitado</div>
+    </div>
+  </div>
+
+  <div style="border:1px solid #1e1e1c;border-radius:12px;overflow:hidden;overflow-x:auto">
+    <table class="inv-table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Sistema de IA</th>
+          <th>Área</th>
+          <th style="text-align:center">P×I</th>
+          <th>Nivel</th>
+          <th>Riesgos clave</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="color:var(--gray);font-size:11px;font-weight:600">ML-IA-01</td>
+          <td><div class="sys-name">Sistema de Recomendación</div><div class="sys-area">Marketplace</div></td>
+          <td><span class="tag tag-green">Marketplace</span></td>
+          <td style="text-align:center"><div class="score-num">12</div><div class="score-sub">4×3</div></td>
+          <td><span class="risk-pill risk-alto">Alto</span></td>
+          <td style="font-size:12px;color:#888">Sesgo de popularidad · filter bubbles · nuevos vendedores excluidos</td>
+        </tr>
+        <tr>
+          <td style="color:var(--gray);font-size:11px;font-weight:600">ML-IA-02</td>
+          <td><div class="sys-name">Detección de Fraude</div><div class="sys-area">Mercado Pago</div></td>
+          <td><span class="tag tag-blue">Fintech</span></td>
+          <td style="text-align:center"><div class="score-num" style="color:var(--red)">20</div><div class="score-sub">4×5</div></td>
+          <td><span class="risk-pill risk-critico">Crítico</span></td>
+          <td style="font-size:12px;color:#888">Falsos positivos · bloqueo de fondos · discriminación indirecta · sin explicabilidad</td>
+        </tr>
+        <tr>
+          <td style="color:var(--gray);font-size:11px;font-weight:600">ML-IA-03</td>
+          <td><div class="sys-name">Scoring Crediticio</div><div class="sys-area">Mercado Crédito</div></td>
+          <td><span class="tag tag-blue">Fintech</span></td>
+          <td style="text-align:center"><div class="score-num" style="color:var(--red)">20</div><div class="score-sub">4×5</div></td>
+          <td><span class="risk-pill risk-critico">Crítico</span></td>
+          <td style="font-size:12px;color:#888">Sesgo socioeconómico · rechazo sin explicación · ausencia de auditorías fairness</td>
+        </tr>
+        <tr>
+          <td style="color:var(--gray);font-size:11px;font-weight:600">ML-IA-04</td>
+          <td><div class="sys-name">Optimización Logística</div><div class="sys-area">Mercado Envíos</div></td>
+          <td><span class="tag tag-gray">Logística</span></td>
+          <td style="text-align:center"><div class="score-num" style="color:var(--red)">16</div><div class="score-sub">4×4</div></td>
+          <td><span class="risk-pill risk-critico">Crítico</span></td>
+          <td style="font-size:12px;color:#888">Sesgo territorial · zonas periféricas degradadas · evaluaciones injustas de repartidores</td>
+        </tr>
+        <tr>
+          <td style="color:var(--gray);font-size:11px;font-weight:600">ML-IA-05</td>
+          <td><div class="sys-name">Moderación de Publicaciones</div><div class="sys-area">Marketplace · GPT-4o</div></td>
+          <td><span class="tag tag-green">Marketplace</span></td>
+          <td style="text-align:center"><div class="score-num" style="color:var(--red)">16</div><div class="score-sub">4×4</div></td>
+          <td><span class="risk-pill risk-critico">Crítico</span></td>
+          <td style="font-size:12px;color:#888">Falsos positivos · vendedores suspendidos sin revisión humana · criterios opacos</td>
+        </tr>
+        <tr>
+          <td style="color:var(--gray);font-size:11px;font-weight:600">ML-IA-06</td>
+          <td><div class="sys-name">Chatbots / Verdi (GPT-4o)</div><div class="sys-area">Atención al cliente</div></td>
+          <td><span class="tag tag-gray">CX</span></td>
+          <td style="text-align:center"><div class="score-num" style="color:var(--yellow)">12</div><div class="score-sub">4×3</div></td>
+          <td><span class="risk-pill risk-alto">Alto</span></td>
+          <td style="font-size:12px;color:#888">Respuestas incorrectas · privacidad de imágenes · sin escalamiento humano claro</td>
+        </tr>
+        <tr>
+          <td style="color:var(--gray);font-size:11px;font-weight:600">ML-IA-07</td>
+          <td><div class="sys-name">Publicidad Digital Algorítmica</div><div class="sys-area">Product Ads</div></td>
+          <td><span class="tag tag-gray">Ads</span></td>
+          <td style="text-align:center"><div class="score-num">8</div><div class="score-sub">2×4</div></td>
+          <td><span class="risk-pill risk-medio">Medio</span></td>
+          <td style="font-size:12px;color:#888">Concentración de mercado · segmentación sin transparencia</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <p style="font-size:11px;color:var(--gray);margin-top:10px">Criterio: Probabilidad (1–5) × Impacto (1–5). 1–4 Bajo · 5–9 Medio · 10–14 Alto · 15–25 Crítico. Fuente: M02 - Inventario IA, reevaluado.</p>
+</section>
+<div class="divider"></div>
+
+<!-- ═══ 03 POLÍTICA ═══ -->
+<section class="section" id="politica">
+  <div class="section-hdr">
+    <div class="section-num">03</div>
+    <h2>Política de IA Responsable</h2>
+    <span class="section-tag">M03 · POL-SGIA</span>
+  </div>
+
+  <div class="context-grid" style="margin-bottom:24px">
+    <div class="ctx-cell">
+      <div class="ctx-label">Propósito</div>
+      <div class="ctx-val" style="font-size:13px">Establecer el marco de gobernanza y gestión de riesgos para el desarrollo, provisión, uso seguro y ético de la IA, garantizando transparencia, rendición de cuentas y cumplimiento normativo a lo largo de todo el ciclo de vida.</div>
+    </div>
+    <div class="ctx-cell">
+      <div class="ctx-label">Alcance</div>
+      <div class="ctx-val" style="font-size:13px">Todas las unidades de negocio, empleados, contratistas y terceros que diseñen, desarrollen, implementen, operen o monitoreen sistemas de IA en los 18 países donde opera Mercado Libre.</div>
+    </div>
+  </div>
+
+  <div class="policy-grid" style="margin-bottom:24px">
+    <div class="policy-card">
+      <div class="policy-card-icon">👁️</div>
+      <div class="policy-card-title">Supervisión humana en decisiones críticas</div>
+      <div class="policy-card-body">Toda decisión crítica de IA debe tener validación humana formal documentada. Evidencia: Logs de auditoría, Matriz de Umbrales de Autonomía.</div>
+    </div>
+    <div class="policy-card">
+      <div class="policy-card-icon">🔍</div>
+      <div class="policy-card-title">Transparencia y Explicabilidad</div>
+      <div class="policy-card-body">Los usuarios deben entender cuándo interactúan con IA y cómo se toman las decisiones que los afectan. Implementar XAI (SHAP/LIME).</div>
+    </div>
+    <div class="policy-card">
+      <div class="policy-card-icon">⚖️</div>
+      <div class="policy-card-title">Equidad y No Discriminación</div>
+      <div class="policy-card-body">Minimizar sesgos perjudiciales en datos y algoritmos. Evidencia: Pruebas de estrés ético, registros de reclamos por discriminación algorítmica.</div>
+    </div>
+    <div class="policy-card">
+      <div class="policy-card-icon">📋</div>
+      <div class="policy-card-title">Responsabilidad y Trazabilidad</div>
+      <div class="policy-card-body">Toda decisión de IA debe tener responsable identificable y evidencia auditable. Matriz de roles, actas de revisión por la dirección.</div>
+    </div>
+    <div class="policy-card">
+      <div class="policy-card-icon">🔒</div>
+      <div class="policy-card-title">Seguridad y Resiliencia</div>
+      <div class="policy-card-body">Los sistemas de IA deben ser robustos frente a ataques y no causar daños. Plan de Continuidad del Negocio, Matriz de Vulnerabilidades.</div>
+    </div>
+    <div class="policy-card">
+      <div class="policy-card-icon">🔄</div>
+      <div class="policy-card-title">Mejora Continua</div>
+      <div class="policy-card-body">Tratar la gobernanza de IA como proceso iterativo. KPIs de gobernanza, planes de reentrenamiento de modelos, informes de revisión.</div>
+    </div>
+    <div class="policy-card">
+      <div class="policy-card-icon">🌱</div>
+      <div class="policy-card-title">Sostenibilidad e Impacto Social</div>
+      <div class="policy-card-body">Considerar impacto ambiental y social de la IA. Medición de huella de carbono y métricas de impacto social por sistema.</div>
+    </div>
+    <div class="policy-card">
+      <div class="policy-card-icon">🔐</div>
+      <div class="policy-card-title">Privacidad y Gobernanza de Datos</div>
+      <div class="policy-card-body">Respetar privacidad y cumplir normativas locales. Acuerdos de confidencialidad, Logs de auditoría, Matriz Legal de uso de IA.</div>
+    </div>
+    <div class="policy-card">
+      <div class="policy-card-icon">📊</div>
+      <div class="policy-card-title">Gestión de Riesgos Proporcional</div>
+      <div class="policy-card-body">El control de cada sistema de IA debe ser proporcional a su impacto real sobre personas y procesos de negocio.</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-label">Estructura de gobierno — RACI</div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:10px">
+      <div>
+        <div style="font-size:11px;font-weight:600;color:var(--green);margin-bottom:6px;text-transform:uppercase;letter-spacing:.06em">CTO</div>
+        <div style="font-size:12px;color:#888">Alinea estrategia tecnológica con IA. Revisión periódica de la Política. Autoriza sistemas fuera del alcance declarado.</div>
+      </div>
+      <div>
+        <div style="font-size:11px;font-weight:600;color:var(--blue);margin-bottom:6px;text-transform:uppercase;letter-spacing:.06em">AI Governance Board</div>
+        <div style="font-size:12px;color:#888">Tecnología + Legal + RRHH/Ética + Operaciones. Confecciona políticas, evalúa riesgos éticos de alto impacto, asigna recursos.</div>
+      </div>
+      <div>
+        <div style="font-size:11px;font-weight:600;color:var(--yellow);margin-bottom:6px;text-transform:uppercase;letter-spacing:.06em">Product Owners + Data Scientists</div>
+        <div style="font-size:12px;color:#888">Responsables operativos de cada sistema de IA. Documentan decisiones, monitorean drift, ejecutan fairness testing.</div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="divider"></div>
+
+<!-- ═══ 04 RIESGOS ═══ -->
+<section class="section" id="riesgos">
+  <div class="section-hdr">
+    <div class="section-num">04</div>
+    <h2>Matriz de riesgos de IA</h2>
+    <span class="section-tag">M04 · v1.0 · Mayo 2026</span>
+  </div>
+
+  <div class="summary-grid" style="margin-bottom:28px">
+    <div class="sum-cell">
+      <div class="sum-n red">4</div>
+      <div class="sum-label">Nivel crítico (≥15)</div>
+    </div>
+    <div class="sum-cell">
+      <div class="sum-n yellow">4</div>
+      <div class="sum-label">Nivel alto (10–14)</div>
+    </div>
+    <div class="sum-cell">
+      <div class="sum-n">2</div>
+      <div class="sum-label">En proceso</div>
+    </div>
+  </div>
+
+  <div class="risk-cards">
+    <div class="risk-card" style="border-color:rgba(255,51,102,.2)">
+      <div class="risk-card-id">R01 — Scoring Crediticio <span class="risk-pill risk-critico">Crítico</span></div>
+      <div class="risk-card-title"><a href="https://docs.google.com/spreadsheets/d/14qFun_BFy2Wy3MkJtqkSQQaUpSmJ0hURXzWH6YGxQ2Y/edit#gid=0&range=A2" target="_blank">Sesgo algorítmico por perfil socioeconómico o geográfico</a></div>
+      <div class="risk-card-body">El modelo ML usa historial transaccional y ubicación geográfica sin validar paridad entre grupos. Usuarios rurales o de bajo nivel digital son rechazados injustamente.</div>
+      <div class="risk-meta">
+        <span class="risk-score">20 <span>P:4 × I:5</span></span>
+        <span class="risk-status status-pendiente">Pendiente</span>
+      </div>
+      <div class="risk-resp">↳ Tratamiento: Auditorías de fairness periódicas · canal de apelación humana · variables excluidas documentadas</div>
+    </div>
+
+    <div class="risk-card" style="border-color:rgba(255,51,102,.2)">
+      <div class="risk-card-id">R02 — Scoring Crediticio <span class="risk-pill risk-critico">Crítico</span></div>
+      <div class="risk-card-title"><a href="https://docs.google.com/spreadsheets/d/14qFun_BFy2Wy3MkJtqkSQQaUpSmJ0hURXzWH6YGxQ2Y/edit#gid=0&range=A3" target="_blank">Decisiones automáticas de rechazo sin explicación comprensible</a></div>
+      <div class="risk-card-body">El sistema emite rechazos sin proporcionar explicación clara ni mecanismo de revisión. Incumple principios de transparencia ISO 42001.</div>
+      <div class="risk-meta">
+        <span class="risk-score">16 <span>P:4 × I:4</span></span>
+        <span class="risk-status status-proceso">En proceso</span>
+      </div>
+      <div class="risk-resp">↳ Tratamiento: Módulo de explicabilidad SHAP/LIME · comunicaciones de rechazo con motivos · registro para revisión</div>
+    </div>
+
+    <div class="risk-card" style="border-color:rgba(255,51,102,.2)">
+      <div class="risk-card-id">R03 — Detección de Fraude <span class="risk-pill risk-critico">Crítico</span></div>
+      <div class="risk-card-title"><a href="https://docs.google.com/spreadsheets/d/14qFun_BFy2Wy3MkJtqkSQQaUpSmJ0hURXzWH6YGxQ2Y/edit#gid=0&range=A4" target="_blank">Falsos positivos que bloquean operaciones legítimas</a></div>
+      <div class="risk-card-body">Modelo antifraude con umbral agresivo genera bloqueos automáticos sin supervisión humana previa. Afectación financiera inmediata, suspensión de ingresos para vendedores.</div>
+      <div class="risk-meta">
+        <span class="risk-score">20 <span>P:4 × I:5</span></span>
+        <span class="risk-status status-pendiente">Pendiente</span>
+      </div>
+      <div class="risk-resp">↳ Tratamiento: Ajustar umbrales con revisión periódica · revisión humana obligatoria pre-bloqueo permanente · canal de desbloqueo urgente</div>
+    </div>
+
+    <div class="risk-card" style="border-color:rgba(255,51,102,.2)">
+      <div class="risk-card-id">R04 — Detección de Fraude <span class="risk-pill risk-critico">Crítico</span></div>
+      <div class="risk-card-title"><a href="https://docs.google.com/spreadsheets/d/14qFun_BFy2Wy3MkJtqkSQQaUpSmJ0hURXzWH6YGxQ2Y/edit#gid=0&range=A5" target="_blank">Discriminación indirecta por patrones socioeconómicos</a></div>
+      <div class="risk-card-body">El modelo aprende patrones históricos que contienen sesgos geográficos o demográficos no intencionados. Usuarios de ciertas regiones marcados de forma desproporcionada.</div>
+      <div class="risk-meta">
+        <span class="risk-score">15 <span>P:3 × I:5</span></span>
+        <span class="risk-status status-pendiente">Pendiente</span>
+      </div>
+      <div class="risk-resp">↳ Tratamiento: Auditoría de sesgo en datos de entrenamiento · monitoreo por segmento geo/demográfico · métricas de equidad documentadas</div>
+    </div>
+
+    <div class="risk-card">
+      <div class="risk-card-id">R05 — Moderación Automática <span class="risk-pill risk-alto">Alto</span></div>
+      <div class="risk-card-title"><a href="https://docs.google.com/spreadsheets/d/14qFun_BFy2Wy3MkJtqkSQQaUpSmJ0hURXzWH6YGxQ2Y/edit#gid=0&range=A6" target="_blank">Publicaciones legítimas eliminadas sin revisión humana</a></div>
+      <div class="risk-card-body">GPT-4o modera millones de publicaciones diarias de forma autónoma. Criterios opacos sin umbral de confianza visible. Pequeños vendedores suspendidos injustamente.</div>
+      <div class="risk-meta">
+        <span class="risk-score">16 <span>P:4 × I:4</span></span>
+        <span class="risk-status status-proceso">En proceso</span>
+      </div>
+      <div class="risk-resp">↳ Tratamiento: Revisión humana obligatoria para suspensiones · publicar criterios · proceso de apelación con SLA definido</div>
+    </div>
+
+    <div class="risk-card">
+      <div class="risk-card-id">R06 — Recomendación <span class="risk-pill risk-alto">Alto</span></div>
+      <div class="risk-card-title"><a href="https://docs.google.com/spreadsheets/d/14qFun_BFy2Wy3MkJtqkSQQaUpSmJ0hURXzWH6YGxQ2Y/edit#gid=0&range=A7" target="_blank">Sesgo de popularidad — filter bubble para nuevos vendedores</a></div>
+      <div class="risk-card-body">Modelo Deep Learning optimiza para conversión, favoreciendo sistemáticamente productos con historial alto. Barrera de entrada para nuevos vendedores.</div>
+      <div class="risk-meta">
+        <span class="risk-score">12 <span>P:4 × I:3</span></span>
+        <span class="risk-status status-pendiente">Pendiente</span>
+      </div>
+      <div class="risk-resp">↳ Tratamiento: Mecanismo exploración/explotación · monitoreo de distribución por antigüedad · auditoría semestral</div>
+    </div>
+
+    <div class="risk-card">
+      <div class="risk-card-id">R07 — Logística <span class="risk-pill risk-alto">Alto</span></div>
+      <div class="risk-card-title"><a href="https://docs.google.com/spreadsheets/d/14qFun_BFy2Wy3MkJtqkSQQaUpSmJ0hURXzWH6YGxQ2Y/edit#gid=0&range=A8" target="_blank">Sesgo territorial: zonas periféricas con servicio degradado</a></div>
+      <div class="risk-card-body">Algoritmos de ruteo priorizan zonas densas y rentables. Zonas rurales o periféricas reciben SLAs más bajos y evaluación desfavorable para repartidores.</div>
+      <div class="risk-meta">
+        <span class="risk-score">12 <span>P:3 × I:4</span></span>
+        <span class="risk-status status-pendiente">Pendiente</span>
+      </div>
+      <div class="risk-resp">↳ Tratamiento: Métricas de equidad territorial · revisión humana de penalizaciones · monitoreo por zona</div>
+    </div>
+
+    <div class="risk-card">
+      <div class="risk-card-id">R08 — Chatbots / Verdi <span class="risk-pill risk-alto">Alto</span></div>
+      <div class="risk-card-title"><a href="https://docs.google.com/spreadsheets/d/14qFun_BFy2Wy3MkJtqkSQQaUpSmJ0hURXzWH6YGxQ2Y/edit#gid=0&range=A9" target="_blank">Respuestas incorrectas con impacto económico en reclamos</a></div>
+      <div class="risk-card-body">Verdi/GPT-4o puede resolver reclamos y devoluciones de forma incorrecta. Sin límites claros para decisiones con efecto económico y sin escalamiento humano.</div>
+      <div class="risk-meta">
+        <span class="risk-score">12 <span>P:4 × I:3</span></span>
+        <span class="risk-status status-pendiente">Pendiente</span>
+      </div>
+      <div class="risk-resp">↳ Tratamiento: Aviso claro de interacción con IA · escalamiento obligatorio a humano · límites para decisiones económicas</div>
+    </div>
+  </div>
+</section>
+<div class="divider"></div>
+
+<!-- ═══ 05 BRECHAS ═══ -->
+<section class="section" id="brechas">
+  <div class="section-hdr">
+    <div class="section-num">05</div>
+    <h2>Brechas detectadas respecto a ISO 42001</h2>
+    <span class="section-tag">M01 · Análisis de brechas</span>
+  </div>
+
+  <div class="summary-grid" style="margin-bottom:28px">
+    <div class="sum-cell">
+      <div class="sum-n red">2</div>
+      <div class="sum-label">Brechas críticas</div>
+    </div>
+    <div class="sum-cell">
+      <div class="sum-n yellow">4</div>
+      <div class="sum-label">Brechas altas</div>
+    </div>
+    <div class="sum-cell">
+      <div class="sum-n" style="color:var(--blue)">1</div>
+      <div class="sum-label">Brecha media</div>
+    </div>
+  </div>
+
+  <div class="brecha-list">
+    <div class="brecha-item">
+      <div class="brecha-id">B-01</div>
+      <div>
+        <div class="brecha-title"><a href="https://docs.google.com/document/d/1ykJMdf9C_xXwZzAO0NPaJ2qJdMHCVTRe/edit" target="_blank">Ausencia de Política de IA Pública Integral</a></div>
+        <div class="brecha-desc">No existe política corporativa única, formal y centralizada de IA Responsable alineada con ISO 42001. Gobernanza dispersa, falta de alineación organizacional y riesgo regulatorio.</div>
+        <div class="brecha-rec">→ Desarrollar e implementar una Política Corporativa de IA Responsable (desarrollada en M03)</div>
+      </div>
+      <span class="crit-alta">Alta</span>
+    </div>
+
+    <div class="brecha-item">
+      <div class="brecha-id">B-02</div>
+      <div>
+        <div class="brecha-title"><a href="https://docs.google.com/document/d/1ykJMdf9C_xXwZzAO0NPaJ2qJdMHCVTRe/edit" target="_blank">Explicabilidad limitada de decisiones automatizadas</a></div>
+        <div class="brecha-desc">Los usuarios no comprenden las razones detrás de suspensiones, bloqueos antifraude, scoring crediticio y limitaciones operativas. Riesgo legal e impacto reputacional.</div>
+        <div class="brecha-rec">→ Implementar mecanismos de Explainable AI (XAI) — SHAP, LIME, comunicaciones legibles</div>
+      </div>
+      <span class="crit-alta">Alta</span>
+    </div>
+
+    <div class="brecha-item" style="border-color:rgba(255,51,102,.25)">
+      <div class="brecha-id">B-03</div>
+      <div>
+        <div class="brecha-title"><a href="https://docs.google.com/document/d/1ykJMdf9C_xXwZzAO0NPaJ2qJdMHCVTRe/edit" target="_blank">Riesgo de automatización excesiva</a></div>
+        <div class="brecha-desc">Decisiones de alto impacto posiblemente automatizadas sin umbrales de revisión humana definidos. Falsos positivos, daño económico, afectación de derechos y escalamiento regulatorio.</div>
+        <div class="brecha-rec">→ Definir umbrales obligatorios de revisión humana para sistemas de alto impacto</div>
+      </div>
+      <span class="crit-critica">Crítica</span>
+    </div>
+
+    <div class="brecha-item" style="border-color:rgba(255,51,102,.25)">
+      <div class="brecha-id">B-04</div>
+      <div>
+        <div class="brecha-title"><a href="https://docs.google.com/document/d/1ykJMdf9C_xXwZzAO0NPaJ2qJdMHCVTRe/edit" target="_blank">Gestión insuficiente de sesgos algorítmicos</a></div>
+        <div class="brecha-desc">No existe evidencia de auditorías de fairness, revisión de datasets ni monitoreo de sesgos en scoring crediticio y segmentación. Riesgo de discriminación indirecta y exclusión financiera.</div>
+        <div class="brecha-rec">→ Implementar auditorías periódicas de sesgo y fairness algorítmico con responsable asignado</div>
+      </div>
+      <span class="crit-critica">Crítica</span>
+    </div>
+
+    <div class="brecha-item">
+      <div class="brecha-id">B-05</div>
+      <div>
+        <div class="brecha-title"><a href="https://docs.google.com/document/d/1ykJMdf9C_xXwZzAO0NPaJ2qJdMHCVTRe/edit" target="_blank">Falta de trazabilidad pública de modelos IA</a></div>
+        <div class="brecha-desc">No existe evidencia de versionado de modelos, logs IA, monitoreo integral ni historial de decisiones automatizadas. Imposibilidad de auditoría y falta de accountability.</div>
+        <div class="brecha-rec">→ Formalizar registros auditables del ciclo de vida IA: versionado, logs, decisiones y drift</div>
+      </div>
+      <span class="crit-alta">Alta</span>
+    </div>
+
+    <div class="brecha-item">
+      <div class="brecha-id">B-06</div>
+      <div>
+        <div class="brecha-title"><a href="https://docs.google.com/document/d/1ykJMdf9C_xXwZzAO0NPaJ2qJdMHCVTRe/edit" target="_blank">Gestión parcial de terceros IA</a></div>
+        <div class="brecha-desc">No existe evidencia completa sobre evaluación de proveedores IA, riesgos de supply chain ni controles contractuales específicos. Dependencia tecnológica y riesgo de incidentes externos.</div>
+        <div class="brecha-rec">→ Formalizar gestión de proveedores IA críticos con cláusulas contractuales específicas</div>
+      </div>
+      <span class="crit-alta">Alta</span>
+    </div>
+
+    <div class="brecha-item">
+      <div class="brecha-id">B-07</div>
+      <div>
+        <div class="brecha-title"><a href="https://docs.google.com/document/d/1ykJMdf9C_xXwZzAO0NPaJ2qJdMHCVTRe/edit" target="_blank">Riesgo ambiental IA no formalizado</a></div>
+        <div class="brecha-desc">No se observa integración entre gobernanza IA, sostenibilidad, consumo energético e impacto ambiental cloud. Incremento de huella tecnológica y riesgo ESG futuro.</div>
+        <div class="brecha-rec">→ Integrar IA governance con estrategia ESG — métricas de consumo energético e impacto ambiental</div>
+      </div>
+      <span class="crit-media">Media</span>
+    </div>
+  </div>
+</section>
+<div class="divider"></div>
+
+<!-- ═══ 06 RECOMENDACIONES ═══ -->
+<section class="section" id="recomendaciones">
+  <div class="section-hdr">
+    <div class="section-num">06</div>
+    <h2>Recomendaciones concretas</h2>
+    <span class="section-tag">Plan de acción · 2026</span>
+  </div>
+
+  <div class="rec-list">
+    <div class="rec-item">
+      <div class="rec-num">01</div>
+      <div>
+        <div class="rec-title"><a href="https://docs.google.com/spreadsheets/d/14qFun_BFy2Wy3MkJtqkSQQaUpSmJ0hURXzWH6YGxQ2Y/edit#gid=0&range=A9" target="_blank">Implementar revisión humana obligatoria en sistemas de alto impacto</a></div>
+        <div class="rec-refs">
+          <a class="rec-ref-link" href="https://docs.google.com/spreadsheets/d/14qFun_BFy2Wy3MkJtqkSQQaUpSmJ0hURXzWH6YGxQ2Y/edit#gid=0&range=A9" target="_blank">R01 · Sesgo scoring crediticio</a>
+          <a class="rec-ref-link" href="https://docs.google.com/spreadsheets/d/14qFun_BFy2Wy3MkJtqkSQQaUpSmJ0hURXzWH6YGxQ2Y/edit#gid=0&range=A11" target="_blank">R03 · Falsos positivos antifraude</a>
+          <a class="rec-ref-link" href="https://docs.google.com/spreadsheets/d/14qFun_BFy2Wy3MkJtqkSQQaUpSmJ0hURXzWH6YGxQ2Y/edit#gid=0&range=A13" target="_blank">R05 · Moderación sin revisión humana</a>
+        </div>
+        <div class="rec-body">Definir umbrales de autonomía para sistemas de scoring, antifraude y moderación. Toda decisión que afecte acceso a fondos, suspensión de cuenta o rechazo de crédito debe requerir validación humana documentada antes de ser definitiva.</div>
+        <div class="rec-footer">
+          <span class="rec-prio tag-red tag">Prioridad inmediata · Q3 2026</span>
+          <span class="rec-estado pendiente">Pendiente</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="rec-item">
+      <div class="rec-num">02</div>
+      <div>
+        <div class="rec-title"><a href="https://docs.google.com/spreadsheets/d/14qFun_BFy2Wy3MkJtqkSQQaUpSmJ0hURXzWH6YGxQ2Y/edit#gid=0&range=A9" target="_blank">Formalizar auditorías de sesgo y fairness algorítmico</a></div>
+        <div class="rec-refs">
+          <a class="rec-ref-link" href="https://docs.google.com/spreadsheets/d/14qFun_BFy2Wy3MkJtqkSQQaUpSmJ0hURXzWH6YGxQ2Y/edit#gid=0&range=A9" target="_blank">R01 · Sesgo socioeconómico scoring</a>
+          <a class="rec-ref-link" href="https://docs.google.com/spreadsheets/d/14qFun_BFy2Wy3MkJtqkSQQaUpSmJ0hURXzWH6YGxQ2Y/edit#gid=0&range=A12" target="_blank">R04 · Discriminación indirecta antifraude</a>
+        </div>
+        <div class="rec-body">Incorporar métricas de equidad (demographic parity, equalized odds) en todos los sistemas de scoring crediticio y antifraude. Publicar resultados de fairness testing periódicos y asignar responsable de equidad algorítmica en el AI Governance Board.</div>
+        <div class="rec-footer">
+          <span class="rec-prio tag-red tag">Prioridad inmediata · Q3 2026</span>
+          <span class="rec-estado pendiente">Pendiente</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="rec-item">
+      <div class="rec-num">03</div>
+      <div>
+        <div class="rec-title"><a href="https://docs.google.com/spreadsheets/d/14qFun_BFy2Wy3MkJtqkSQQaUpSmJ0hURXzWH6YGxQ2Y/edit#gid=0&range=A10" target="_blank">Desplegar módulos de explicabilidad (XAI)</a></div>
+        <div class="rec-refs">
+          <a class="rec-ref-link" href="https://docs.google.com/spreadsheets/d/14qFun_BFy2Wy3MkJtqkSQQaUpSmJ0hURXzWH6YGxQ2Y/edit#gid=0&range=A10" target="_blank">R02 · Rechazos sin explicación al usuario</a>
+        </div>
+        <div class="rec-body">Integrar SHAP o LIME en los modelos de scoring crediticio y antifraude. Redactar comunicaciones de rechazo con motivos comprensibles para el usuario final. Registrar todas las decisiones automatizadas para auditoría posterior.</div>
+        <div class="rec-footer">
+          <span class="rec-prio tag-yellow tag">Alta prioridad · Q3–Q4 2026</span>
+          <span class="rec-estado proceso">En proceso</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="rec-item">
+      <div class="rec-num">04</div>
+      <div>
+        <div class="rec-title"><a href="https://docs.google.com/spreadsheets/d/14qFun_BFy2Wy3MkJtqkSQQaUpSmJ0hURXzWH6YGxQ2Y/edit#gid=0&range=A11" target="_blank">Crear canales de apelación con SLA definidos</a></div>
+        <div class="rec-refs">
+          <a class="rec-ref-link" href="https://docs.google.com/spreadsheets/d/14qFun_BFy2Wy3MkJtqkSQQaUpSmJ0hURXzWH6YGxQ2Y/edit#gid=0&range=A11" target="_blank">R03 · Falsos positivos antifraude</a>
+          <a class="rec-ref-link" href="https://docs.google.com/spreadsheets/d/14qFun_BFy2Wy3MkJtqkSQQaUpSmJ0hURXzWH6YGxQ2Y/edit#gid=0&range=A13" target="_blank">R05 · Moderación sin apelación clara</a>
+        </div>
+        <div class="rec-body">Establecer procesos formales de revisión para: bloqueos de cuentas, suspensiones de publicaciones y rechazos de crédito. Definir tiempos máximos de respuesta (SLA) y garantizar que el dinero retenido sea liberado durante el proceso.</div>
+        <div class="rec-footer">
+          <span class="rec-prio tag-yellow tag">Alta prioridad · Q4 2026</span>
+          <span class="rec-estado pendiente">Pendiente</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="rec-item">
+      <div class="rec-num">05</div>
+      <div>
+        <div class="rec-title"><a href="https://docs.google.com/spreadsheets/d/14qFun_BFy2Wy3MkJtqkSQQaUpSmJ0hURXzWH6YGxQ2Y/edit#gid=0&range=A15" target="_blank">Implementar trazabilidad del ciclo de vida de modelos IA</a></div>
+        <div class="rec-refs">
+          <a class="rec-ref-link" href="https://docs.google.com/spreadsheets/d/14qFun_BFy2Wy3MkJtqkSQQaUpSmJ0hURXzWH6YGxQ2Y/edit#gid=0&range=A15" target="_blank">R07 · Sesgo territorial logística</a>
+          <a class="rec-ref-link" href="https://docs.google.com/spreadsheets/d/14qFun_BFy2Wy3MkJtqkSQQaUpSmJ0hURXzWH6YGxQ2Y/edit#gid=0&range=A16" target="_blank">R08 · Pricing dinámico sin trazabilidad</a>
+        </div>
+        <div class="rec-body">Formalizar el versionado de modelos, logs de auditoría, historial de decisiones y monitoreo de model drift. Definir responsables por modelo y establecer criterios de reentrenamiento documentados.</div>
+        <div class="rec-footer">
+          <span class="rec-prio tag-yellow tag">Alta prioridad · Q4 2026</span>
+          <span class="rec-estado pendiente">Pendiente</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="rec-item">
+      <div class="rec-num">06</div>
+      <div>
+        <div class="rec-title"><a href="https://docs.google.com/spreadsheets/d/14qFun_BFy2Wy3MkJtqkSQQaUpSmJ0hURXzWH6YGxQ2Y/edit#gid=0&range=A14" target="_blank">Publicar política pública de IA Responsable</a></div>
+        <div class="rec-refs">
+          <a class="rec-ref-link" href="https://docs.google.com/spreadsheets/d/14qFun_BFy2Wy3MkJtqkSQQaUpSmJ0hURXzWH6YGxQ2Y/edit#gid=0&range=A14" target="_blank">R06 · Sesgo de popularidad sin política</a>
+        </div>
+        <div class="rec-body">Consolidar las iniciativas dispersas en un único documento corporativo alineado con ISO 42001. Incluir principios, alcance, estructura de gobierno (RACI), y reglas operativas por sistema de IA. Publicar versión resumida para usuarios.</div>
+        <div class="rec-footer">
+          <span class="rec-prio tag-blue tag">Mediano plazo · Q4 2026</span>
+          <span class="rec-estado pendiente">Pendiente</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="rec-item">
+      <div class="rec-num">07</div>
+      <div>
+        <div class="rec-title"><a href="https://docs.google.com/spreadsheets/d/14qFun_BFy2Wy3MkJtqkSQQaUpSmJ0hURXzWH6YGxQ2Y/edit#gid=0&range=A17" target="_blank">Integrar métricas ESG en la gobernanza de IA</a></div>
+        <div class="rec-refs">
+          <a class="rec-ref-link" href="https://docs.google.com/spreadsheets/d/14qFun_BFy2Wy3MkJtqkSQQaUpSmJ0hURXzWH6YGxQ2Y/edit#gid=0&range=A17" target="_blank">R09 · Huella de carbono IA en producción</a>
+        </div>
+        <div class="rec-body">Medir y reportar consumo energético por modelo (CO₂e por inferencia), incorporar criterios de impacto ambiental en la evaluación de nuevos sistemas de IA, y alinear con objetivos de sostenibilidad corporativa.</div>
+        <div class="rec-footer">
+          <span class="rec-prio tag-gray tag">Largo plazo · 2027</span>
+          <span class="rec-estado pendiente">Pendiente</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-top:40px;padding:28px;border:1px solid rgba(51,197,102,.2);border-radius:12px;background:rgba(51,197,102,.03)">
+    <div style="font-size:11px;font-weight:600;color:var(--green);text-transform:uppercase;letter-spacing:.1em;margin-bottom:12px">Conclusión del análisis</div>
+    <p style="font-size:14px;color:#bbb;line-height:1.7;margin-bottom:12px">Mercado Libre opera como una de las organizaciones más intensivas en IA de América Latina, pero sin un sistema formal de gestión que garantice el uso ético y seguro de esos sistemas. La implementación del <strong style="color:var(--white)">SGIA bajo ISO/IEC 42001:2023</strong> no es optativa: es urgente.</p>
+    <p style="font-size:14px;color:#bbb;line-height:1.7">Las brechas identificadas —especialmente la automatización excesiva y la ausencia de gestión de sesgos— representan riesgos concretos para los derechos de millones de usuarios. Las recomendaciones priorizan la <strong style="color:var(--green)">supervisión humana</strong>, la <strong style="color:var(--green)">explicabilidad</strong> y la <strong style="color:var(--green)">equidad algorítmica</strong> como ejes estructurales del sistema de gestión.</p>
+  </div>
+</section>
+
+</div><!-- /main -->
+
+<footer class="site-footer">
+  <div class="logo">
+    <svg width="110" height="32" viewBox="0 0 180 56" xmlns="http://www.w3.org/2000/svg">
+      <ellipse cx="30" cy="26" rx="28" ry="24" fill="#FFE600" stroke="#2D3277" stroke-width="3.5"/>
+      <path d="M8 30 C10 24 16 21 21 23 L27 26" stroke="#2D3277" stroke-width="3" stroke-linecap="round" fill="none"/>
+      <path d="M21 23 C22 20 25 19 27 21" stroke="#2D3277" stroke-width="2" stroke-linecap="round" fill="none"/>
+      <path d="M52 30 C50 24 44 21 39 23 L33 26" stroke="#2D3277" stroke-width="3" stroke-linecap="round" fill="none"/>
+      <path d="M39 23 C38 20 35 19 33 21" stroke="#2D3277" stroke-width="2" stroke-linecap="round" fill="none"/>
+      <path d="M27 26 C28 28 32 28 33 26 C34 24 30 22 27 26 Z" fill="#2D3277"/>
+      <text x="68" y="22" font-family="Arial,Helvetica,sans-serif" font-weight="800" font-size="15" fill="white">mercado</text>
+      <text x="68" y="41" font-family="Arial,Helvetica,sans-serif" font-weight="800" font-size="15" fill="white">libre</text>
+    </svg>
+  </div>
+  <p>Trabajo Práctico 3 · Formación de Auditores ISO/IEC 42001 · Mayo 2026</p>
+  <p>M. Fernanda Laurans · mfernandalaurans@gmail.com</p>
+</footer>
+
+<script>
+function setActive(btn, id) {
+  document.querySelectorAll('.pill').forEach(p => p.classList.remove('on'));
+  btn.classList.add('on');
+  const el = document.getElementById(id);
+  if (el) el.scrollIntoView({behavior:'smooth', block:'start'});
+}
+
+// Tab switching within sections
+function switchTab(e, prefix) {
+  const btn = e.target;
+  const parent = btn.closest('.tabs-row');
+  const panes = parent.parentElement.querySelectorAll('.tab-pane');
+  const btns = parent.querySelectorAll('.tab-btn');
+  const idx = Array.from(btns).indexOf(btn);
+  btns.forEach(b => b.classList.remove('on'));
+  panes.forEach(p => p.classList.remove('on'));
+  btn.classList.add('on');
+  if (panes[idx]) panes[idx].classList.add('on');
+}
+
+// Intersection observer for reveal animations
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.05 });
+document.querySelectorAll('.section').forEach(s => observer.observe(s));
+
+// Active nav pill on scroll
+const sections = document.querySelectorAll('.section[id]');
+const pills = document.querySelectorAll('.pill');
+window.addEventListener('scroll', () => {
+  let current = '';
+  sections.forEach(s => {
+    const top = s.getBoundingClientRect().top;
+    if (top < 140) current = s.id;
+  });
+  if (current) {
+    pills.forEach(p => {
+      const href = p.getAttribute('onclick') || '';
+      p.classList.toggle('on', href.includes("'" + current + "'"));
+    });
+  }
+});
+</script>
+</body>
+</html>
