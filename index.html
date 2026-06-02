@@ -354,24 +354,11 @@ body{font-family:'Inter','Proxima Nova',Arial,sans-serif;background:var(--ml-bg)
 
 <header class="site-header">
   <div class="ml-logo-wrap">
-    <svg class="ml-logo-svg" viewBox="0 0 180 56" xmlns="http://www.w3.org/2000/svg">
-      <!-- Óvalo fondo amarillo con borde azul -->
-      <ellipse cx="30" cy="26" rx="28" ry="24" fill="#FFE600" stroke="#2D3277" stroke-width="3.5"/>
-      <!-- Apretón de manos -->
-      <!-- brazo izquierdo -->
-      <path d="M8 30 C10 24 16 21 21 23 L27 26" stroke="#2D3277" stroke-width="3" stroke-linecap="round" fill="none"/>
-      <!-- dedo pulgar izquierdo -->
-      <path d="M21 23 C22 20 25 19 27 21" stroke="#2D3277" stroke-width="2" stroke-linecap="round" fill="none"/>
-      <!-- brazo derecho -->
-      <path d="M52 30 C50 24 44 21 39 23 L33 26" stroke="#2D3277" stroke-width="3" stroke-linecap="round" fill="none"/>
-      <!-- dedo pulgar derecho -->
-      <path d="M39 23 C38 20 35 19 33 21" stroke="#2D3277" stroke-width="2" stroke-linecap="round" fill="none"/>
-      <!-- unión de manos en el centro -->
-      <path d="M27 26 C28 28 32 28 33 26 C34 24 30 22 27 26 Z" fill="#2D3277"/>
-      <!-- Wordmark -->
-      <text x="68" y="22" font-family="Arial,Helvetica,sans-serif" font-weight="800" font-size="15" fill="#2D3277">mercado</text>
-      <text x="68" y="41" font-family="Arial,Helvetica,sans-serif" font-weight="800" font-size="15" fill="#2D3277">libre</text>
-    </svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 48" style="height:36px;width:auto;flex-shrink:0">
+  <ellipse cx="80" cy="24" rx="78" ry="22" fill="#FFE600"/>
+  <text x="80" y="20" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-weight="900" font-size="13" fill="#2D3277">mercado</text>
+  <text x="80" y="35" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-weight="900" font-size="13" fill="#2D3277">libre</text>
+</svg>
   </div>
   <!-- Barra de búsqueda -->
   <div class="header-search">
@@ -384,7 +371,7 @@ body{font-family:'Inter','Proxima Nova',Arial,sans-serif;background:var(--ml-bg)
     <a class="nav-link" onclick="document.getElementById('inventario').scrollIntoView({behavior:'smooth'})">Inventario</a>
     <a class="nav-link" onclick="document.getElementById('politica').scrollIntoView({behavior:'smooth'})">Política</a>
     <a class="nav-link" onclick="document.getElementById('riesgos').scrollIntoView({behavior:'smooth'})">Riesgos</a>
-    <button class="print-btn" onclick="window.print()">⬇ Imprimir</button>
+    <button class="print-btn" onclick="imprimirPDF()">⬇ Descargar PDF</button>
   </div>
 </header>
 
@@ -396,16 +383,11 @@ body{font-family:'Inter','Proxima Nova',Arial,sans-serif;background:var(--ml-bg)
       <h1>Sistema de Gestión de<br><em>Inteligencia Artificial</em></h1>
       <p class="hero-sub">Diseño de Auditoría · <strong>ISO/IEC 42001:2023</strong></p>
       <div class="hero-org">
-        <svg width="110" height="34" viewBox="0 0 180 56" xmlns="http://www.w3.org/2000/svg">
-          <ellipse cx="30" cy="26" rx="28" ry="24" fill="#FFE600" stroke="#2D3277" stroke-width="3.5"/>
-          <path d="M8 30 C10 24 16 21 21 23 L27 26" stroke="#2D3277" stroke-width="3" stroke-linecap="round" fill="none"/>
-          <path d="M21 23 C22 20 25 19 27 21" stroke="#2D3277" stroke-width="2" stroke-linecap="round" fill="none"/>
-          <path d="M52 30 C50 24 44 21 39 23 L33 26" stroke="#2D3277" stroke-width="3" stroke-linecap="round" fill="none"/>
-          <path d="M39 23 C38 20 35 19 33 21" stroke="#2D3277" stroke-width="2" stroke-linecap="round" fill="none"/>
-          <path d="M27 26 C28 28 32 28 33 26 C34 24 30 22 27 26 Z" fill="#2D3277"/>
-          <text x="68" y="22" font-family="Arial,Helvetica,sans-serif" font-weight="800" font-size="15" fill="#2D3277">mercado</text>
-          <text x="68" y="41" font-family="Arial,Helvetica,sans-serif" font-weight="800" font-size="15" fill="#2D3277">libre</text>
-        </svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 48" style="height:32px;width:auto">
+  <ellipse cx="80" cy="24" rx="78" ry="22" fill="#FFE600"/>
+  <text x="80" y="20" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-weight="900" font-size="13" fill="#2D3277">mercado</text>
+  <text x="80" y="35" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-weight="900" font-size="13" fill="#2D3277">libre</text>
+</svg>
         <div class="hero-org-label">Caso de estudio · SGIA aplicado</div>
       </div>
       <div class="hero-stats">
@@ -429,7 +411,7 @@ body{font-family:'Inter','Proxima Nova',Arial,sans-serif;background:var(--ml-bg)
         </div>
         <div class="hstat">
           <div class="hstat-link" onclick="document.getElementById('politica').scrollIntoView({behavior:'smooth'})">
-            <div class="n"><span class="accent">9</span></div>
+            <div class="n"><span class="accent">8</span></div>
             <div class="l">Principios</div>
           </div>
         </div>
@@ -438,27 +420,21 @@ body{font-family:'Inter','Proxima Nova',Arial,sans-serif;background:var(--ml-bg)
     <!-- Ilustración derecha -->
     <div style="flex-shrink:0;display:flex;align-items:center;justify-content:center">
       <svg width="260" height="220" viewBox="0 0 260 220" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <!-- Fondo card -->
-        <rect x="20" y="20" width="220" height="180" rx="16" fill="white" opacity=".85"/>
-        <!-- Barra amarilla top -->
-        <rect x="20" y="20" width="220" height="8" rx="8" fill="#FFE600"/>
-        <!-- ISO badge -->
-        <rect x="44" y="46" width="80" height="28" rx="6" fill="#2D3277"/>
-        <text x="84" y="65" text-anchor="middle" font-family="Arial,sans-serif" font-weight="700" font-size="11" fill="#FFE600">ISO 42001</text>
-        <!-- SGIA text -->
-        <text x="44" y="100" font-family="Arial,sans-serif" font-weight="800" font-size="22" fill="#2D3277">SGIA</text>
-        <text x="44" y="118" font-family="Arial,sans-serif" font-weight="400" font-size="11" fill="#666">MercadoLibre</text>
-        <!-- Barras de riesgo -->
-        <rect x="44" y="136" width="150" height="8" rx="4" fill="#EBEBEB"/>
-        <rect x="44" y="136" width="60" height="8" rx="4" fill="#F23D4F"/>
-        <rect x="44" y="152" width="150" height="8" rx="4" fill="#EBEBEB"/>
-        <rect x="44" y="152" width="100" height="8" rx="4" fill="#FFE600"/>
-        <rect x="44" y="168" width="150" height="8" rx="4" fill="#EBEBEB"/>
-        <rect x="44" y="168" width="130" height="8" rx="4" fill="#00A650"/>
-        <!-- Checkmark -->
-        <circle cx="210" cy="60" r="18" fill="#E8F7EF"/>
-        <text x="210" y="67" text-anchor="middle" font-size="18">✓</text>
-      </svg>
+  <rect x="20" y="20" width="220" height="180" rx="16" fill="white" opacity=".85"/>
+  <rect x="20" y="20" width="220" height="8" rx="8" fill="#FFE600"/>
+  <rect x="44" y="46" width="80" height="28" rx="6" fill="#2D3277"/>
+  <text x="84" y="63" text-anchor="middle" font-family="Arial,sans-serif" font-weight="700" font-size="9" fill="#FFE600">ISO 42001:2023</text>
+  <text x="44" y="100" font-family="Arial,sans-serif" font-weight="800" font-size="22" fill="#2D3277">SGIA</text>
+  <text x="44" y="118" font-family="Arial,sans-serif" font-weight="400" font-size="11" fill="#666">MercadoLibre</text>
+  <rect x="44" y="136" width="150" height="8" rx="4" fill="#EBEBEB"/>
+  <rect x="44" y="136" width="60" height="8" rx="4" fill="#F23D4F"/>
+  <rect x="44" y="152" width="150" height="8" rx="4" fill="#EBEBEB"/>
+  <rect x="44" y="152" width="100" height="8" rx="4" fill="#FFE600"/>
+  <rect x="44" y="168" width="150" height="8" rx="4" fill="#EBEBEB"/>
+  <rect x="44" y="168" width="130" height="8" rx="4" fill="#00A650"/>
+  <circle cx="210" cy="60" r="18" fill="#E8F7EF"/>
+  <text x="210" y="67" text-anchor="middle" font-size="18">✓</text>
+</svg>
     </div>
   </div>
 </section>
@@ -481,6 +457,14 @@ body{font-family:'Inter','Proxima Nova',Arial,sans-serif;background:var(--ml-bg)
     <div class="section-num">01</div>
     <h2>Contexto de la organización</h2>
     <span class="section-tag">ISO 42001 · Cláusula 4</span>
+  </div>
+
+  <div style="display:flex;align-items:center;gap:12px;background:#EBF0FF;border:1px solid rgba(45,50,119,.2);border-radius:var(--ml-radius-lg);padding:14px 18px;margin-bottom:20px">
+    <div style="font-size:20px;flex-shrink:0">📄</div>
+    <div style="flex:1;font-size:13px;color:var(--ml-blue)">
+      <strong>Esta es una versión resumida del Análisis de Contexto.</strong> Para ver el documento completo con factores externos e internos, partes interesadas y alcance del SGIA,
+      <a href="https://docs.google.com/document/d/1cttGsCDf039J2-GRsCjNWh2LIgLQd2UU/edit?rtpof=true&tab=t.0" target="_blank" style="color:var(--ml-blue-light);font-weight:700;text-decoration:none;border-bottom:1px solid var(--ml-blue-light)">hacé clic aquí ↗</a>
+    </div>
   </div>
 
   <div class="context-grid" style="margin-bottom:24px">
@@ -567,6 +551,14 @@ body{font-family:'Inter','Proxima Nova',Arial,sans-serif;background:var(--ml-bg)
     <div class="section-num">02</div>
     <h2>Inventario de sistemas de IA</h2>
     <span class="section-tag">M02 · EU AI Act + ISO 42001</span>
+  </div>
+
+  <div style="display:flex;align-items:center;gap:12px;background:#EBF0FF;border:1px solid rgba(45,50,119,.2);border-radius:var(--ml-radius-lg);padding:14px 18px;margin-bottom:20px">
+    <div style="font-size:20px;flex-shrink:0">📄</div>
+    <div style="flex:1;font-size:13px;color:var(--ml-blue)">
+      <strong>Esta es una versión resumida del Inventario de Sistemas de IA.</strong> Para ver el documento completo con clasificación EU AI Act, reevaluación de riesgos y controles sugeridos,
+      <a href="https://docs.google.com/spreadsheets/d/17PEzUPKOxgKA_fFHDwaYPfYY8WzCkJkL/edit?gid=1544844926#gid=1544844926" target="_blank" style="color:var(--ml-blue-light);font-weight:700;text-decoration:none;border-bottom:1px solid var(--ml-blue-light)">hacé clic aquí ↗</a>
+    </div>
   </div>
 
   <div class="summary-grid" style="margin-bottom:28px">
@@ -668,6 +660,14 @@ body{font-family:'Inter','Proxima Nova',Arial,sans-serif;background:var(--ml-bg)
     <span class="section-tag">M03 · POL-SGIA</span>
   </div>
 
+  <div style="display:flex;align-items:center;gap:12px;background:#EBF0FF;border:1px solid rgba(45,50,119,.2);border-radius:var(--ml-radius-lg);padding:14px 18px;margin-bottom:20px">
+    <div style="font-size:20px;flex-shrink:0">📄</div>
+    <div style="flex:1;font-size:13px;color:var(--ml-blue)">
+      <strong>Esta es una versión resumida de la Política de IA.</strong> Para ver el documento completo con principios detallados, RACI, reglas operativas y evidencias requeridas,
+      <a href="https://docs.google.com/document/d/1bKbvnhASBdXUfvANrZkTR17VGxM34qyc/edit" target="_blank" style="color:var(--ml-blue-light);font-weight:700;text-decoration:none;border-bottom:1px solid var(--ml-blue-light)">hacé clic aquí ↗</a>
+    </div>
+  </div>
+
   <div class="context-grid" style="margin-bottom:24px">
     <div class="ctx-cell">
       <div class="ctx-label">Propósito</div>
@@ -720,11 +720,7 @@ body{font-family:'Inter','Proxima Nova',Arial,sans-serif;background:var(--ml-bg)
       <div class="policy-card-title">Privacidad y Gobernanza de Datos</div>
       <div class="policy-card-body">Respetar privacidad y cumplir normativas locales. Acuerdos de confidencialidad, Logs de auditoría, Matriz Legal de uso de IA.</div>
     </div>
-    <div class="policy-card">
-      <div class="policy-card-icon">📊</div>
-      <div class="policy-card-title">Gestión de Riesgos Proporcional</div>
-      <div class="policy-card-body">El control de cada sistema de IA debe ser proporcional a su impacto real sobre personas y procesos de negocio.</div>
-    </div>
+
   </div>
 
   <div class="card">
@@ -755,109 +751,50 @@ body{font-family:'Inter','Proxima Nova',Arial,sans-serif;background:var(--ml-bg)
     <span class="section-tag">M04 · v1.0 · Mayo 2026</span>
   </div>
 
+  <div style="display:flex;align-items:center;gap:12px;background:#EBF0FF;border:1px solid rgba(45,50,119,.2);border-radius:var(--ml-radius-lg);padding:14px 18px;margin-bottom:20px">
+    <div style="font-size:20px;flex-shrink:0">📄</div>
+    <div style="flex:1;font-size:13px;color:var(--ml-blue)">
+      <strong>Esta es una versión resumida de la Matriz de Riesgos.</strong> Para ver el documento completo con probabilidad, impacto, tratamiento, responsables y fechas de compromiso,
+      <a href="https://docs.google.com/spreadsheets/d/1zAX4dUQ7UQo0DMB58bGUTOxaJLiJ9F2P/edit?gid=484915415#gid=484915415" target="_blank" style="color:var(--ml-blue-light);font-weight:700;text-decoration:none;border-bottom:1px solid var(--ml-blue-light)">hacé clic aquí ↗</a>
+    </div>
+  </div>
+
   <div class="summary-grid" style="margin-bottom:28px">
     <div class="sum-cell">
-      <div class="sum-n red">4</div>
-      <div class="sum-label">Nivel crítico (≥15)</div>
+      <div class="sum-n red">6</div>
+      <div class="sum-label">Nivel crítico</div>
     </div>
     <div class="sum-cell">
-      <div class="sum-n yellow">4</div>
-      <div class="sum-label">Nivel alto (10–14)</div>
+      <div class="sum-n yellow">3</div>
+      <div class="sum-label">Nivel alto</div>
     </div>
     <div class="sum-cell">
-      <div class="sum-n">2</div>
-      <div class="sum-label">En proceso</div>
+      <div class="sum-n">1</div>
+      <div class="sum-label">Nivel medio</div>
     </div>
   </div>
 
   <div class="risk-cards">
-    <div class="risk-card" style="border-color:rgba(255,51,102,.2)">
-      <div class="risk-card-id">R01 — Scoring Crediticio <span class="risk-pill risk-critico">Crítico</span></div>
-      <div class="risk-card-title"><a href="https://docs.google.com/spreadsheets/d/14qFun_BFy2Wy3MkJtqkSQQaUpSmJ0hURXzWH6YGxQ2Y/edit#gid=0&range=A2" target="_blank">Sesgo algorítmico por perfil socioeconómico o geográfico</a></div>
-      <div class="risk-card-body">El modelo ML usa historial transaccional y ubicación geográfica sin validar paridad entre grupos. Usuarios rurales o de bajo nivel digital son rechazados injustamente.</div>
-      <div class="risk-meta">
-        <span class="risk-score">20 <span>P:4 × I:5</span></span>
-        <span class="risk-status status-pendiente">Pendiente</span>
-      </div>
-      <div class="risk-resp">↳ Tratamiento: Auditorías de fairness periódicas · canal de apelación humana · variables excluidas documentadas</div>
-    </div>
+    <div class="risk-card" style="border-color:rgba(242,61,79,.3)"><div class="risk-card-id">R01 — Scoring crediticio · Mercado Crédito <span class="risk-pill risk-critico">Crítico</span></div><div class="risk-card-title">Sesgo algorítmico por perfil socioeconómico o geográfico</div><div class="risk-card-body">El modelo ML usa historial transaccional y ubicación geográfica sin validar paridad entre grupos. Usuarios rurales o de bajo nivel digital son rechazados injustamente.</div><div class="risk-meta"><span class="risk-score">20 <span>P:4 × I:5</span></span><span class="risk-status status-pendiente">Pendiente</span></div><div class="risk-resp">↳ Auditorías de fairness periódicas · canal de apelación humana · variables excluidas documentadas</div></div>
 
-    <div class="risk-card" style="border-color:rgba(255,51,102,.2)">
-      <div class="risk-card-id">R02 — Scoring Crediticio <span class="risk-pill risk-critico">Crítico</span></div>
-      <div class="risk-card-title"><a href="https://docs.google.com/spreadsheets/d/14qFun_BFy2Wy3MkJtqkSQQaUpSmJ0hURXzWH6YGxQ2Y/edit#gid=0&range=A3" target="_blank">Decisiones automáticas de rechazo sin explicación comprensible</a></div>
-      <div class="risk-card-body">El sistema emite rechazos sin proporcionar explicación clara ni mecanismo de revisión. Incumple principios de transparencia ISO 42001.</div>
-      <div class="risk-meta">
-        <span class="risk-score">16 <span>P:4 × I:4</span></span>
-        <span class="risk-status status-proceso">En proceso</span>
-      </div>
-      <div class="risk-resp">↳ Tratamiento: Módulo de explicabilidad SHAP/LIME · comunicaciones de rechazo con motivos · registro para revisión</div>
-    </div>
+    <div class="risk-card" style="border-color:rgba(242,61,79,.3)"><div class="risk-card-id">R02 — Scoring crediticio · Mercado Crédito <span class="risk-pill risk-critico">Crítico</span></div><div class="risk-card-title">Decisiones automáticas de rechazo sin explicación comprensible al usuario</div><div class="risk-card-body">El sistema emite rechazos sin proporcionar explicación clara ni mecanismo de revisión. Incumple principios de transparencia ISO 42001.</div><div class="risk-meta"><span class="risk-score">16 <span>P:4 × I:4</span></span><span class="risk-status status-proceso">En Proceso</span></div><div class="risk-resp">↳ Módulo de explicabilidad SHAP/LIME · comunicaciones de rechazo con motivos · registro para revisión</div></div>
 
-    <div class="risk-card" style="border-color:rgba(255,51,102,.2)">
-      <div class="risk-card-id">R03 — Detección de Fraude <span class="risk-pill risk-critico">Crítico</span></div>
-      <div class="risk-card-title"><a href="https://docs.google.com/spreadsheets/d/14qFun_BFy2Wy3MkJtqkSQQaUpSmJ0hURXzWH6YGxQ2Y/edit#gid=0&range=A4" target="_blank">Falsos positivos que bloquean operaciones legítimas</a></div>
-      <div class="risk-card-body">Modelo antifraude con umbral agresivo genera bloqueos automáticos sin supervisión humana previa. Afectación financiera inmediata, suspensión de ingresos para vendedores.</div>
-      <div class="risk-meta">
-        <span class="risk-score">20 <span>P:4 × I:5</span></span>
-        <span class="risk-status status-pendiente">Pendiente</span>
-      </div>
-      <div class="risk-resp">↳ Tratamiento: Ajustar umbrales con revisión periódica · revisión humana obligatoria pre-bloqueo permanente · canal de desbloqueo urgente</div>
-    </div>
+    <div class="risk-card" style="border-color:rgba(242,61,79,.3)"><div class="risk-card-id">R03 — Detección de fraude · Mercado Pago <span class="risk-pill risk-critico">Crítico</span></div><div class="risk-card-title">Falsos positivos que bloquean operaciones o cuentas legítimas</div><div class="risk-card-body">Modelo antifraude con umbral agresivo genera bloqueos automáticos sin supervisión humana previa. Afectación financiera inmediata y suspensión de ingresos para vendedores.</div><div class="risk-meta"><span class="risk-score">20 <span>P:4 × I:5</span></span><span class="risk-status status-pendiente">Pendiente</span></div><div class="risk-resp">↳ Ajustar umbrales · revisión humana obligatoria pre-bloqueo permanente · canal de desbloqueo urgente</div></div>
 
-    <div class="risk-card" style="border-color:rgba(255,51,102,.2)">
-      <div class="risk-card-id">R04 — Detección de Fraude <span class="risk-pill risk-critico">Crítico</span></div>
-      <div class="risk-card-title"><a href="https://docs.google.com/spreadsheets/d/14qFun_BFy2Wy3MkJtqkSQQaUpSmJ0hURXzWH6YGxQ2Y/edit#gid=0&range=A5" target="_blank">Discriminación indirecta por patrones socioeconómicos</a></div>
-      <div class="risk-card-body">El modelo aprende patrones históricos que contienen sesgos geográficos o demográficos no intencionados. Usuarios de ciertas regiones marcados de forma desproporcionada.</div>
-      <div class="risk-meta">
-        <span class="risk-score">15 <span>P:3 × I:5</span></span>
-        <span class="risk-status status-pendiente">Pendiente</span>
-      </div>
-      <div class="risk-resp">↳ Tratamiento: Auditoría de sesgo en datos de entrenamiento · monitoreo por segmento geo/demográfico · métricas de equidad documentadas</div>
-    </div>
+    <div class="risk-card" style="border-color:rgba(242,61,79,.3)"><div class="risk-card-id">R04 — Detección de fraude · Mercado Pago <span class="risk-pill risk-critico">Crítico</span></div><div class="risk-card-title">Discriminación indirecta por patrones socioeconómicos o regionales</div><div class="risk-card-body">El modelo aprende patrones históricos que contienen sesgos geográficos o demográficos no intencionados. Usuarios de ciertas regiones marcados de forma desproporcionada.</div><div class="risk-meta"><span class="risk-score">15 <span>P:3 × I:5</span></span><span class="risk-status status-pendiente">Pendiente</span></div><div class="risk-resp">↳ Auditoría de sesgo en datos de entrenamiento · monitoreo por segmento geo/demográfico · métricas de equidad</div></div>
 
-    <div class="risk-card">
-      <div class="risk-card-id">R05 — Moderación Automática <span class="risk-pill risk-alto">Alto</span></div>
-      <div class="risk-card-title"><a href="https://docs.google.com/spreadsheets/d/14qFun_BFy2Wy3MkJtqkSQQaUpSmJ0hURXzWH6YGxQ2Y/edit#gid=0&range=A6" target="_blank">Publicaciones legítimas eliminadas sin revisión humana</a></div>
-      <div class="risk-card-body">GPT-4o modera millones de publicaciones diarias de forma autónoma. Criterios opacos sin umbral de confianza visible. Pequeños vendedores suspendidos injustamente.</div>
-      <div class="risk-meta">
-        <span class="risk-score">16 <span>P:4 × I:4</span></span>
-        <span class="risk-status status-proceso">En proceso</span>
-      </div>
-      <div class="risk-resp">↳ Tratamiento: Revisión humana obligatoria para suspensiones · publicar criterios · proceso de apelación con SLA definido</div>
-    </div>
+    <div class="risk-card" style="border-color:rgba(242,61,79,.3)"><div class="risk-card-id">R05 — Moderación automática de publicaciones <span class="risk-pill risk-critico">Crítico</span></div><div class="risk-card-title">Eliminación de publicaciones legítimas sin revisión humana previa (falsos positivos)</div><div class="risk-card-body">GPT-4 modera millones de publicaciones diarias de forma autónoma. Criterios opacos sin umbral de confianza visible. Pequeños vendedores suspendidos injustamente.</div><div class="risk-meta"><span class="risk-score">16 <span>P:4 × I:4</span></span><span class="risk-status status-proceso">En Proceso</span></div><div class="risk-resp">↳ Revisión humana obligatoria para suspensiones · publicar criterios de moderación · proceso de apelación con SLA</div></div>
 
-    <div class="risk-card">
-      <div class="risk-card-id">R06 — Recomendación <span class="risk-pill risk-alto">Alto</span></div>
-      <div class="risk-card-title"><a href="https://docs.google.com/spreadsheets/d/14qFun_BFy2Wy3MkJtqkSQQaUpSmJ0hURXzWH6YGxQ2Y/edit#gid=0&range=A7" target="_blank">Sesgo de popularidad — filter bubble para nuevos vendedores</a></div>
-      <div class="risk-card-body">Modelo Deep Learning optimiza para conversión, favoreciendo sistemáticamente productos con historial alto. Barrera de entrada para nuevos vendedores.</div>
-      <div class="risk-meta">
-        <span class="risk-score">12 <span>P:4 × I:3</span></span>
-        <span class="risk-status status-pendiente">Pendiente</span>
-      </div>
-      <div class="risk-resp">↳ Tratamiento: Mecanismo exploración/explotación · monitoreo de distribución por antigüedad · auditoría semestral</div>
-    </div>
+    <div class="risk-card"><div class="risk-card-id">R06 — Sistema de recomendación de productos <span class="risk-pill risk-alto">Alto</span></div><div class="risk-card-title">Sesgo de popularidad (filter bubble) que excluye nuevos vendedores</div><div class="risk-card-body">El modelo Deep Learning optimiza para conversión, favoreciendo sistemáticamente productos con historial de ventas alto. Barrera de entrada para nuevos vendedores.</div><div class="risk-meta"><span class="risk-score">12 <span>P:4 × I:3</span></span><span class="risk-status status-pendiente">Pendiente</span></div><div class="risk-resp">↳ Mecanismo exploración/explotación · monitoreo de distribución por antigüedad · auditoría semestral</div></div>
 
-    <div class="risk-card">
-      <div class="risk-card-id">R07 — Logística <span class="risk-pill risk-alto">Alto</span></div>
-      <div class="risk-card-title"><a href="https://docs.google.com/spreadsheets/d/14qFun_BFy2Wy3MkJtqkSQQaUpSmJ0hURXzWH6YGxQ2Y/edit#gid=0&range=A8" target="_blank">Sesgo territorial: zonas periféricas con servicio degradado</a></div>
-      <div class="risk-card-body">Algoritmos de ruteo priorizan zonas densas y rentables. Zonas rurales o periféricas reciben SLAs más bajos y evaluación desfavorable para repartidores.</div>
-      <div class="risk-meta">
-        <span class="risk-score">12 <span>P:3 × I:4</span></span>
-        <span class="risk-status status-pendiente">Pendiente</span>
-      </div>
-      <div class="risk-resp">↳ Tratamiento: Métricas de equidad territorial · revisión humana de penalizaciones · monitoreo por zona</div>
-    </div>
+    <div class="risk-card"><div class="risk-card-id">R07 — Optimización logística · Mercado Envíos <span class="risk-pill risk-alto">Alto</span></div><div class="risk-card-title">Sesgo territorial: zonas periféricas reciben servicio degradado</div><div class="risk-card-body">Los algoritmos de ruteo priorizan rutas rentables, relegando zonas de menor densidad o mayor riesgo vial. Demoras sistemáticas y brecha de acceso al servicio.</div><div class="risk-meta"><span class="risk-score">12 <span>P:3 × I:4</span></span><span class="risk-status status-proceso">En Proceso</span></div><div class="risk-resp">↳ KPIs de calidad por zona · equidad territorial en función objetivo del algoritmo · reportar métricas de cobertura</div></div>
 
-    <div class="risk-card">
-      <div class="risk-card-id">R08 — Chatbots / Verdi <span class="risk-pill risk-alto">Alto</span></div>
-      <div class="risk-card-title"><a href="https://docs.google.com/spreadsheets/d/14qFun_BFy2Wy3MkJtqkSQQaUpSmJ0hURXzWH6YGxQ2Y/edit#gid=0&range=A9" target="_blank">Respuestas incorrectas con impacto económico en reclamos</a></div>
-      <div class="risk-card-body">Verdi/GPT-4o puede resolver reclamos y devoluciones de forma incorrecta. Sin límites claros para decisiones con efecto económico y sin escalamiento humano.</div>
-      <div class="risk-meta">
-        <span class="risk-score">12 <span>P:4 × I:3</span></span>
-        <span class="risk-status status-pendiente">Pendiente</span>
-      </div>
-      <div class="risk-resp">↳ Tratamiento: Aviso claro de interacción con IA · escalamiento obligatorio a humano · límites para decisiones económicas</div>
-    </div>
+    <div class="risk-card"><div class="risk-card-id">R08 — Pricing dinámico para vendedores <span class="risk-pill risk-alto">Alto</span></div><div class="risk-card-title">Algoritmos que personalizan precios y eliminan la competencia</div><div class="risk-card-body">Algoritmos ML ajustan precios en tiempo real por perfil de comprador. Riesgo legal antimonopolio y cobro diferenciado a usuarios según perfil.</div><div class="risk-meta"><span class="risk-score">12 <span>P:3 × I:4</span></span><span class="risk-status status-pendiente">Pendiente</span></div><div class="risk-resp">↳ Política de prohibición de discriminación de precios · monitoreo de sincronización · canal de alerta para vendedores</div></div>
+
+    <div class="risk-card" style="border-color:rgba(45,50,119,.15)"><div class="risk-card-id">R09 — Infraestructura IA · Todos los sistemas <span class="risk-pill risk-medio">Medio</span></div><div class="risk-card-title">Huella de carbono por consumo energético masivo de modelos IA en producción</div><div class="risk-card-body">Modelos Deep Learning y GPT-4o operan 24/7 en AWS y Google Cloud sin política documentada de compensación de emisiones ni auditoría ambiental.</div><div class="risk-meta"><span class="risk-score">9 <span>P:3 × I:3</span></span><span class="risk-status status-pendiente">Pendiente</span></div><div class="risk-resp">↳ Métricas de consumo energético por modelo · política ESG vinculada al SGIA · auditoría de proveedores cloud</div></div>
+
+    <div class="risk-card" style="border-color:rgba(242,61,79,.3)"><div class="risk-card-id">R10 — Recomendación / Pricing / Moderación / Logística <span class="risk-pill risk-critico">Crítico</span></div><div class="risk-card-title">Impacto psicosocial en usuarios y trabajadores por decisiones algorítmicas automatizadas</div><div class="risk-card-body">Algoritmos de recomendación, ruteo y moderación generan estrés, ansiedad y dependencia sin mecanismos de protección psicosocial para usuarios y repartidores.</div><div class="risk-meta"><span class="risk-score">16 <span>P:4 × I:4</span></span><span class="risk-status status-pendiente">Pendiente</span></div><div class="risk-resp">↳ Revisión humana en decisiones de alto impacto emocional · diseño ético en recomendación · indicadores de bienestar</div></div>
+  </div>
   </div>
 </section>
 <div class="divider"></div>
@@ -868,6 +805,14 @@ body{font-family:'Inter','Proxima Nova',Arial,sans-serif;background:var(--ml-bg)
     <div class="section-num">05</div>
     <h2>Brechas detectadas respecto a ISO 42001</h2>
     <span class="section-tag">M01 · Análisis de brechas</span>
+  </div>
+
+  <div style="display:flex;align-items:center;gap:12px;background:#EBF0FF;border:1px solid rgba(45,50,119,.2);border-radius:var(--ml-radius-lg);padding:14px 18px;margin-bottom:20px">
+    <div style="font-size:20px;flex-shrink:0">📄</div>
+    <div style="flex:1;font-size:13px;color:var(--ml-blue)">
+      <strong>Esta es una versión resumida del Análisis de Brechas.</strong> Para ver el documento completo con observaciones, riesgos asociados y recomendaciones detalladas,
+      <a href="https://docs.google.com/document/d/1ve9vgf2TJd1gB9cBXm_KDsvea5eBbp1q/edit" target="_blank" style="color:var(--ml-blue-light);font-weight:700;text-decoration:none;border-bottom:1px solid var(--ml-blue-light)">hacé clic aquí ↗</a>
+    </div>
   </div>
 
   <div class="summary-grid" style="margin-bottom:28px">
@@ -1090,22 +1035,35 @@ body{font-family:'Inter','Proxima Nova',Arial,sans-serif;background:var(--ml-bg)
 
 <footer class="site-footer">
   <div class="logo">
-    <svg width="110" height="32" viewBox="0 0 180 56" xmlns="http://www.w3.org/2000/svg">
-      <ellipse cx="30" cy="26" rx="28" ry="24" fill="#FFE600" stroke="#2D3277" stroke-width="3.5"/>
-      <path d="M8 30 C10 24 16 21 21 23 L27 26" stroke="#2D3277" stroke-width="3" stroke-linecap="round" fill="none"/>
-      <path d="M21 23 C22 20 25 19 27 21" stroke="#2D3277" stroke-width="2" stroke-linecap="round" fill="none"/>
-      <path d="M52 30 C50 24 44 21 39 23 L33 26" stroke="#2D3277" stroke-width="3" stroke-linecap="round" fill="none"/>
-      <path d="M39 23 C38 20 35 19 33 21" stroke="#2D3277" stroke-width="2" stroke-linecap="round" fill="none"/>
-      <path d="M27 26 C28 28 32 28 33 26 C34 24 30 22 27 26 Z" fill="#2D3277"/>
-      <text x="68" y="22" font-family="Arial,Helvetica,sans-serif" font-weight="800" font-size="15" fill="white">mercado</text>
-      <text x="68" y="41" font-family="Arial,Helvetica,sans-serif" font-weight="800" font-size="15" fill="white">libre</text>
-    </svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 48" style="height:32px;width:auto">
+  <ellipse cx="80" cy="24" rx="78" ry="22" fill="#FFE600"/>
+  <text x="80" y="20" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-weight="900" font-size="13" fill="#2D3277">mercado</text>
+  <text x="80" y="35" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-weight="900" font-size="13" fill="#2D3277">libre</text>
+</svg>
   </div>
   <p>Trabajo Práctico 3 · Formación de Auditores ISO/IEC 42001 · Mayo 2026</p>
   <p>M. Fernanda Laurans · mfernandalaurans@gmail.com</p>
 </footer>
 
 <script>
+function imprimirPDF() {
+  const style = document.createElement('style');
+  style.id = 'pdf-override';
+  style.textContent = `
+    @media print {
+      .site-header, .section-nav, .print-btn { display: none !important; }
+      .section { opacity: 1 !important; transform: none !important; }
+      body { background: #fff !important; color: #000 !important; }
+      .hero { background: #FFE600 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      .risk-card, .brecha-item, .policy-card, .rec-item, .ctx-cell, .reg-card, .sum-cell { break-inside: avoid; }
+      a { color: inherit !important; text-decoration: none !important; }
+    }
+  `;
+  document.head.appendChild(style);
+  window.print();
+  setTimeout(() => { const s = document.getElementById('pdf-override'); if(s) s.remove(); }, 1000);
+}
+
 function setActive(btn, id) {
   document.querySelectorAll('.pill').forEach(p => p.classList.remove('on'));
   btn.classList.add('on');
